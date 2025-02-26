@@ -1,0 +1,27 @@
+@mixin cover-background {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+// TODO: Сделать глобальную переменную со значением карточки
+@mixin grid($value: 100px) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($value, 1fr));
+}
+
+@mixin flex($value: center) {
+  display: flex;
+
+  align-items: center;
+  justify-content: $value;
+}
+
+@mixin box($value, $radius: false) {
+  width: $value;
+  height: $value;
+
+  @if ($radius != false) {
+    border-radius: $radius;
+  }
+}

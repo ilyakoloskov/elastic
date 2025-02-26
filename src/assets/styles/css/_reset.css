@@ -1,0 +1,82 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+input,
+textarea,
+button,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+ul,
+ol {
+  list-style-position: inside;
+  list-style-type: none;
+}
+
+li::marker,
+ol::marker {
+  display: none;
+}
+
+li::before,
+ol::before {
+  width: 4px;
+  height: 4px;
+  margin-top: 4px;
+  margin-right: 6px;
+  vertical-align: middle;
+  content: '';
+  background-color: var(--color-primary-400);
+  border-radius: 50%;
+}
+
+a {
+  text-decoration: none;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield; /* Для Firefox */
+  -webkit-appearance: textfield; /* Для Safari и старых версий Chrome */
+  appearance: textfield; /* Стандартное свойство для современных браузеров */
+}
+
+input[type='number']:hover,
+input[type='number']:focus {
+  -moz-appearance: number-input; /* Для Firefox */
+  -webkit-appearance: number-input; /* Для Safari и старых версий Chrome */
+  appearance: number-input; /* Стандартное свойство для современных браузеров */
+}
+
+input[type='file']::before {
+  display: inline-block;
+  cursor: pointer;
+  content: attr(data-3423);
+}
+
+/* Скрываем стандартный input */
+
+input[type='file']::file-selector-button {
+  display: none;
+}
+
+input[type='file'] {
+  position: absolute;
+  z-index: -1;
+}

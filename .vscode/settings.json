@@ -1,0 +1,42 @@
+{
+  /** Files */
+  "files.eol": "\n",
+  "files.encoding": "utf8",
+
+  /** Typescript */
+  "typescript.tsdk": "node_modules/typescript/lib",
+
+  /** Eslint */
+  "eslint.validate": ["typescript", "javascript", "vue"],
+
+  /** Stylelint */
+  "stylelint.validate": ["scss", "css", "vue"],
+  "scss.validate": false,
+  "css.validate": false,
+
+  /** Prettier */
+  "prettier.documentSelectors": ["**/*.svg"],
+
+  /** Editor */
+  "editor.tabSize": 2,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "never",
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
+  },
+
+  /** Formatting */
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": false,
+    "editor.formatOnSave": true
+  },
+
+  /** I18n */
+  "i18n-ally.localesPaths": ["src/lang"],
+  "i18n-ally.displayLanguage": "ru",
+  "i18n-ally.keystyle": "nested"
+}

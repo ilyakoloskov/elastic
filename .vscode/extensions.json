@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "vue.volar",
+    "editorconfig.editorconfig",
+    "esbenp.prettier-vscode",
+    "simonsiefke.svg-preview",
+    "dbaeumer.vscode-eslint",
+    "stylelint.vscode-stylelint",
+    "aaron-bond.better-comments",
+    "lokalise.i18n-ally"
+  ]
+}
