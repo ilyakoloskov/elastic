@@ -17,7 +17,7 @@
   display: flex;
   justify-content: space-between;
   height: var(--header-height);
-  background-color: var(--color-secondary-900);
+  background-color: var(--color-accent-900);
 
   &__container {
     @include flex(space-between);

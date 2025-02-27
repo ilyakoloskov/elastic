@@ -17,7 +17,7 @@
   justify-content: $value;
 }
 
-@mixin box($value, $radius: false) {
+@mixin box($value: 20px, $radius: false) {
   width: $value;
   height: $value;
 

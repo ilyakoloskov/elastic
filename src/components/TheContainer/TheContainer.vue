@@ -14,7 +14,7 @@ const props = withDefaults(
 <template>
   <Component
     :is="tag"
-    :class="[`the-container_${props.size}`, 'the-container']"
+    :class="[`the-container_size-${props.size}`, 'the-container']"
   >
     <slot />
   </Component>
@@ -27,40 +27,40 @@ const props = withDefaults(
   margin: 0 auto;
   width: 100%;
 
-  &_xxs {
+  &_size-xxs {
     max-width: var(--container-width-xxs);
   }
 
-  &_xs {
+  &_size-xs {
     max-width: var(--container-width-xs);
   }
 
-  &_sm {
+  &_size-sm {
     max-width: var(--container-width-sm);
   }
 
-  &_md {
+  &_size-md {
     max-width: var(--container-width-md);
   }
 
-  &_lg {
+  &_size-lg {
     max-width: var(--container-width-lg);
   }
 
-  &_xl {
+  &_size-xl {
     max-width: var(--container-width-xl);
   }
 
-  &_xxl {
+  &_size-xxl {
     max-width: var(--container-width-xxl);
   }
 
-  &_xxxl {
+  &_size-xxxl {
     max-width: var(--container-width-xxxl);
   }
 
-  &_fluid {
-    max-width: 98%;
+  &_size-fluid {
+    max-width: 100%;
   }
 }
 </style>

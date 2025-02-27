@@ -33,7 +33,7 @@ export const Primary: Story = {
   },
 }
 
-export const Secondary: Story = {
+export const accent: Story = {
   args: {
     primary: false,
     label: 'Button',

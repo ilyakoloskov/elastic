@@ -9,6 +9,9 @@
 
 :root {
   /** Container */
+  --container-indent-sm: 10px;
+  --container-indent-md: 15px;
+
   --container-width-xxs: calc(320px + calc(var(--container-indent-md) * 2));
   --container-width-xs: calc(360px + calc(var(--container-indent-md) * 2));
   --container-width-sm: calc(425px + calc(var(--container-indent-md) * 2));
@@ -17,10 +20,7 @@
   --container-width-xl: calc(1280px + calc(var(--container-indent-md) * 2));
   --container-width-xxl: calc(1440px + calc(var(--container-indent-md) * 2));
   --container-width-xxxl: calc(2560px + calc(var(--container-indent-md) * 2));
-  --container-fluid: calc(98% + calc(var(--container-indent-md) * 2));
-
-  --container-indent-sm: 10px;
-  --container-indent-md: 15px;
+  --container-fluid: 100%;
 
   /** Colors */
   --color-primary-h: 35;
@@ -36,19 +36,19 @@
   --color-primary-800: hsl(var(--color-primary-h), var(--color-primary-s), 10%);
   --color-primary-900: hsl(var(--color-primary-h), var(--color-primary-s), 5%);
 
-  --color-secondary-h: 240;
-  --color-secondary-s: 5%;
-  --color-secondary-50: hsl(var(--color-secondary-h), var(--color-secondary-s), 95%);
-  --color-secondary-100: hsl(var(--color-secondary-h), var(--color-secondary-s), 90%);
-  --color-secondary-200: hsl(var(--color-secondary-h), var(--color-secondary-s), 80%);
-  --color-secondary-300: hsl(var(--color-secondary-h), var(--color-secondary-s), 70%);
-  --color-secondary-400: hsl(var(--color-secondary-h), var(--color-secondary-s), 60%);
-  --color-secondary-500: hsl(var(--color-secondary-h), var(--color-secondary-s), 50%);
-  --color-secondary-600: hsl(var(--color-secondary-h), var(--color-secondary-s), 40%);
-  --color-secondary-700: hsl(var(--color-secondary-h), var(--color-secondary-s), 30%);
-  --color-secondary-800: hsl(var(--color-secondary-h), var(--color-secondary-s), 20%);
-  --color-secondary-900: hsl(var(--color-secondary-h), var(--color-secondary-s), 10%);
-  --color-secondary-950: hsl(var(--color-secondary-h), var(--color-secondary-s), 5%);
+  --color-accent-h: 240;
+  --color-accent-s: 5%;
+  --color-accent-50: hsl(var(--color-accent-h), var(--color-accent-s), 95%);
+  --color-accent-100: hsl(var(--color-accent-h), var(--color-accent-s), 90%);
+  --color-accent-200: hsl(var(--color-accent-h), var(--color-accent-s), 80%);
+  --color-accent-300: hsl(var(--color-accent-h), var(--color-accent-s), 70%);
+  --color-accent-400: hsl(var(--color-accent-h), var(--color-accent-s), 60%);
+  --color-accent-500: hsl(var(--color-accent-h), var(--color-accent-s), 50%);
+  --color-accent-600: hsl(var(--color-accent-h), var(--color-accent-s), 40%);
+  --color-accent-700: hsl(var(--color-accent-h), var(--color-accent-s), 30%);
+  --color-accent-800: hsl(var(--color-accent-h), var(--color-accent-s), 20%);
+  --color-accent-900: hsl(var(--color-accent-h), var(--color-accent-s), 10%);
+  --color-accent-950: hsl(var(--color-accent-h), var(--color-accent-s), 5%);
 
   --color-danger-h: 356;
   --color-danger-s: 90%;
@@ -136,33 +136,33 @@
 }
 
 html[data-theme='light'] {
-  --color-secondary-0: #09090b;
-  --color-secondary-50: #18181b;
-  --color-secondary-100: #27272a;
-  --color-secondary-200: #3f3f46;
-  --color-secondary-300: #52525b;
-  --color-secondary-400: #71717a;
-  --color-secondary-500: #a1a1aa;
-  --color-secondary-600: #d4d4d8;
-  --color-secondary-700: #e4e4e7;
-  --color-secondary-800: #f4f4f5;
-  --color-secondary-900: #fafafa;
-  --color-secondary-950: #ffffff;
+  --color-accent-0: #09090b;
+  --color-accent-50: #18181b;
+  --color-accent-100: #27272a;
+  --color-accent-200: #3f3f46;
+  --color-accent-300: #52525b;
+  --color-accent-400: #71717a;
+  --color-accent-500: #a1a1aa;
+  --color-accent-600: #d4d4d8;
+  --color-accent-700: #e4e4e7;
+  --color-accent-800: #f4f4f5;
+  --color-accent-900: #fafafa;
+  --color-accent-950: #ffffff;
 }
 
 html[data-theme='dark'] {
-  --color-secondary-0: #ffffff;
-  --color-secondary-50: #fafafa;
-  --color-secondary-100: #f4f4f5;
-  --color-secondary-200: #e4e4e7;
-  --color-secondary-300: #d4d4d8;
-  --color-secondary-400: #a1a1aa;
-  --color-secondary-500: #71717a;
-  --color-secondary-600: #52525b;
-  --color-secondary-700: #3f3f46;
-  --color-secondary-800: #27272a;
-  --color-secondary-900: #18181b;
-  --color-secondary-950: #09090b;
+  --color-accent-0: #ffffff;
+  --color-accent-50: #fafafa;
+  --color-accent-100: #f4f4f5;
+  --color-accent-200: #e4e4e7;
+  --color-accent-300: #d4d4d8;
+  --color-accent-400: #a1a1aa;
+  --color-accent-500: #71717a;
+  --color-accent-600: #52525b;
+  --color-accent-700: #3f3f46;
+  --color-accent-800: #27272a;
+  --color-accent-900: #18181b;
+  --color-accent-950: #09090b;
 }
 
 html {
@@ -170,8 +170,9 @@ html {
   font-size: var(--font-size-m);
   font-style: normal;
   font-weight: 400;
-  color: var(--color-secondary-50);
-  background-color: var(--color-secondary-800);
+  line-height: 1.2;
+  color: var(--color-accent-50);
+  background-color: var(--color-accent-800);
   transition: var(--transition);
 }
 

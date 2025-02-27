@@ -26,6 +26,6 @@ const animationHeader = computed(() => {
 
 .app-footer {
   height: 45px;
-  background-color: var(--color-secondary-900);
+  background-color: var(--color-accent-900);
 }
 </style>

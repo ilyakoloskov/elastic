@@ -12,7 +12,7 @@
     margin: 0;
     overflow: hidden;
     appearance: none;
-    background-color: var(--color-secondary-700);
+    background-color: var(--color-accent-700);
     border: 1px solid transparent;
     border-radius: var(--border-radius-md);
     outline: none;
@@ -204,7 +204,7 @@
   }
 
   &__input_outlined {
-    border: 1px solid var(--color-secondary-400);
+    border: 1px solid var(--color-accent-400);
   }
 
   &__input:disabled {
