@@ -4,7 +4,7 @@
       <li class="the-navigation__item">
         <NuxtLink
           class="the-navigation__link"
-          to="about"
+          to="/about"
           >About</NuxtLink
         >
       </li>
