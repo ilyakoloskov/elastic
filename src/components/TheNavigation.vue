@@ -22,9 +22,8 @@
 <style lang="scss">
 .the-navigation {
   &__list {
-    display: flex;
+    @include flex(center);
     gap: var(--spacing-s);
-    align-items: center;
     justify-content: space-between;
   }
 

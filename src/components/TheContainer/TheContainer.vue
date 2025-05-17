@@ -5,7 +5,7 @@ const props = withDefaults(
     tag?: 'div' | 'section'
   }>(),
   {
-    size: 'xl',
+    size: 'xxl',
     tag: 'div',
   }
 )
@@ -22,8 +22,8 @@ const props = withDefaults(
 
 <style lang="scss">
 .the-container {
-  padding-right: var(--container-indent-md);
-  padding-left: var(--container-indent-md);
+  padding-right: var(--container-indent);
+  padding-left: var(--container-indent);
   margin: 0 auto;
   width: 100%;
 

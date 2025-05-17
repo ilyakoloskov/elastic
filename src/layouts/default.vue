@@ -1,31 +1,52 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+const isSticky = ref(true)
+const isScroll = ref(false)
 
-const animationHeader = computed(() => {
-  return {
-    animation: { from: { y: -60 }, to: { y: 0 } },
-    type: 'from',
-    duration: 1,
-    clearStyle: true,
-  }
+const handleScroll = () => {
+  isScroll.value = Boolean(window.scrollY > 0)
+  console.log(window.scrollY)
+  console.log(isScroll.value)
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
 })
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
+
+// const animations = {
+//   header: {
+//     animation: { from: { y: -60 }, to: { y: 0 } },
+//     type: 'from',
+//     duration: 1,
+//     clearStyle: true,
+//   },
+//   footer: {
+//     animation: { from: { y: 60 }, to: { y: 0 } },
+//     type: 'from',
+//     duration: 1,
+//     clearStyle: true,
+//     delay: 1,
+//   },
+// }
 </script>
 
 <template>
-  <AppHeader v-gsap="animationHeader" />
+  <AppHeader
+    :is-scroll="isScroll"
+    :is-sticky="isSticky"
+  />
   <main class="app-main">
     <slot />
   </main>
-  <footer class="app-footer"></footer>
+  <AppFooter />
 </template>
 
 <style lang="scss">
 .app-main {
   flex-grow: 1;
-}
-
-.app-footer {
-  height: 45px;
-  background-color: var(--color-accent-900);
 }
 </style>

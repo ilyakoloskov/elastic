@@ -1,3 +1,13 @@
+<script setup>
+import IconLogo from '@assets/icons/logo.svg'
+</script>
+
 <template>
-  <div class="the-logo">LogoTip</div>
+  <IconLogo class="the-logo" />
 </template>
+
+<style lang="scss">
+.the-logo {
+  @include box(74px);
+}
+</style>

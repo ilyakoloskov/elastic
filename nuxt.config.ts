@@ -5,6 +5,10 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   ssr: true,
 
+  webpack: {
+    extractCSS: false,
+  },
+
   app: {
     rootId: 'app',
     rootAttrs: {
@@ -39,7 +43,7 @@ export default defineNuxtConfig({
       },
     },
   },
-  modules: ['@pinia/nuxt', '@vueuse/nuxt', '@nuxt/fonts'],
+  modules: ['@pinia/nuxt', '@vueuse/nuxt', '@nuxt/fonts', '@nuxt/image'],
   srcDir: 'src/',
 
   alias: {
@@ -50,8 +54,8 @@ export default defineNuxtConfig({
 
   fonts: {
     families: [
-      { name: 'Inter', provider: 'google' },
-      { name: 'Helvetica', provider: 'google' },
+      { name: 'Muller', provider: 'google' },
+      { name: 'Harpseal', src: '@assets/fonts/harpseal.otf', weight: 'bold' },
     ],
   },
 

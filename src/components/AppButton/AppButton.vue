@@ -10,7 +10,6 @@ const props = withDefaults(defineProps<AppButtonProps>(), {
 
   size: 'md',
   rounded: 'md',
-  variant: 'solid',
 
   isLoading: false,
   isDisabled: false,
@@ -93,8 +92,6 @@ const onFocus = () => {
 </template>
 
 <style lang="scss">
-// TODO: Сделать нормальные стили
-
 .app-button {
   display: inline-flex;
   align-items: center;
@@ -103,7 +100,10 @@ const onFocus = () => {
 
   padding: 10px 20px;
   border-radius: var(--border-radius-md);
+  border: 2px solid var(--color-primary-200);
   transition: var(--transition-hover);
+
+  background-color: var(--color-primary-10);
 
   cursor: pointer;
 
@@ -113,24 +113,24 @@ const onFocus = () => {
 
   &:hover {
     outline: none;
-    background-color: var(--color-primary-500);
+    background-color: var(--color-primary-200);
+    color: var(--color-primary-50);
   }
 
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 99px #cbd6ee;
+  &:active {
+    color: var(--color-primary-10);
   }
 
   &:disabled,
   &_disabled:disabled {
     cursor: not-allowed;
     pointer-events: all !important;
-    background-color: var(--color-primary-600);
+    background-color: var(--color-secondary-100);
+    color: var(--color-primary-50);
   }
 
   &__content {
-    display: flex;
-    align-items: center;
+    @include flex(center);
   }
 
   &__icon-loading {

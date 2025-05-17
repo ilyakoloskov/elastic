@@ -33,9 +33,7 @@ const emit = defineEmits<{
 }>()
 
 const slots = defineSlots<{
-  /** Контент перед инпутом */
   leading?: () => unknown
-  /** Контент после инпута */
   trailing?: () => unknown
 }>()
 
