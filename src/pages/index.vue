@@ -203,11 +203,13 @@
       </div>
     </TheContainer>
   </section>
+  <FeedbackForm/>
 
-  <section class="form">FORM</section>
+
 </template>
 
 <style lang="scss">
+
 // MAIN-SCREEN
 .main-screen {
   &__container {
@@ -416,3 +418,5 @@
   }
 }
 </style>
+<script setup lang="ts">
+</script>

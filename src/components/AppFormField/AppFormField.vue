@@ -9,14 +9,14 @@ const id = computed(() => props.for ?? v4())
 
 <template>
   <div class="app-form-field">
-    <label
-      v-if="props.label"
-      :for="props.for"
-      class="app-form-field__label"
-    >
-      {{ props.label }}
-      <template v-if="props.required">*</template>
-    </label>
+<!--    <label-->
+<!--      v-if="props.label"-->
+<!--      :for="props.for"-->
+<!--      class="app-form-field__label"-->
+<!--    >-->
+<!--      {{ props.label }}-->
+<!--      <template v-if="props.required">*</template>-->
+<!--    </label>-->
     <div class="app-form-field__item">
       <slot :id="id" />
     </div>

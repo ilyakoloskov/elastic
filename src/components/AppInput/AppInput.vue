@@ -24,7 +24,7 @@ const props = withDefaults(defineProps<AppInputProps>(), {
   readonly: false,
   full: false,
   autocomplete: '',
-  size: 'md',
+  size: 'xs',
   variant: 'solid',
 })
 
