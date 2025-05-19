@@ -130,7 +130,14 @@
             </p>
           </div>
 
-          <nav class="categories__navigation">navigation</nav>
+          <nav class="categories__navigation">
+            <AppButton class="categories__navigation-button" to="/product/jibits">Джибитсы</AppButton>
+            <AppButton class="categories__navigation-button" to="/product/magnets">Магниты</AppButton>
+            <AppButton class="categories__navigation-button" to="/product/keyrings">Брелоки</AppButton>
+            <AppButton class="categories__navigation-button" to="/product/pullers">Пуллеры</AppButton>
+            <AppButton class="categories__navigation-button" to="/product/patches">Патчи</AppButton>
+            <AppButton class="categories__navigation-button" to="/product/kosters">Костеры</AppButton>
+          </nav>
         </div>
       </div>
     </TheContainer>
@@ -198,7 +205,14 @@
             </p>
           </div>
 
-          <nav class="categories__navigation">navigation</nav>
+          <nav class="categories__navigation">
+            <AppButton class="categories__navigation-button" to="/product/stickers">Стикеры</AppButton>
+            <AppButton class="categories__navigation-button" to="/product/stickers3d">3d-стикеры</AppButton>
+            <AppButton class="categories__navigation-button" to="/product/stickers-tg">Тг-стикеры</AppButton>
+            <AppButton class="categories__navigation-button" to="/product/coloring">Раскраски</AppButton>
+            <AppButton class="categories__navigation-button" to="/product/brandbook">Брендбук</AppButton>
+            <AppButton class="categories__navigation-button" to="/product/mascot">Маскот</AppButton>
+          </nav>
         </div>
       </div>
     </TheContainer>
@@ -373,6 +387,12 @@
 
   &__navigation {
     max-width: 923px;
+    display: flex;
+    gap: 10px;
+  }
+
+  &__navigation-button {
+    color: var(--color-primary-200);
   }
 }
 

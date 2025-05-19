@@ -56,11 +56,12 @@
   }
 
   &__contacts {
-    height: 100%;
+    height: auto;
     max-width: 250px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 8px;
   }
 

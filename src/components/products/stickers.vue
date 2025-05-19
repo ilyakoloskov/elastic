@@ -7,28 +7,32 @@
       <TheLogotip class="stickers__logo" />
       <div class="stickers__bg-wrapper">
         <h4 class="stickers__bg-text">
-          мощный инструмент, <br>для узнаваемости вашего бренда
+          маленькие истории на <br />
+          больших поверхностях
         </h4>
-        <img class="stickers__bg-img" src="../../assets/images/stickers-pattern.png" alt="">
+        <img class="stickers__bg-img" src="@assets/images/stickers2-pattern.png" alt="">
       </div>
-      <img class="stickers__main-img" src="@assets/images/free-tablet-mockup.png" alt="">
+      <img class="stickers__main-img" src="@assets/images/stickers2-image.png" alt="">
     </div>
     <div class="stickers__info-block">
       <div class="stickers__title-block">
         <h2 class="stickers__title">Стикеры</h2>
-        <h4 class="stickers__title-description"><span class="stickers__text-accent">ПОВЫШАЮТ лояльность</span> клиента С ПЕРВОГО СООБЩЕНИЯ</h4>
+        <h4 class="stickers__title-description"><span class="stickers__text-accent">яркий способ </span>сделать
+          обычнЫе вещи необычнымИ</h4>
       </div>
       <div class="stickers__description-block">
         <p>
-          Корпоративные стикеры для социальных сетей нужны для живой и эмоциональной переписки внутри коллектива, с
-          клиентами, партнерами. Персонализированные стикеры выделят ваш бренд и сделают его узнаваемым. Иллюстрации
-          пригодятся для создания мерча и сувениров.
+          Каждый стикер, оставленный в том или ином месте (или подаренный кому‑то) является ненавязчивой рекламой
+          бренда, что приводит к большей узнаваемости компании. Если приложить стикер к заказу, это обязательно оставит
+          хорошее впечатление. У клиента возникнут приятные ассоциации.
+          На стикере можно разместить москота или логотип компании. Мы воплотим в жизнь любой индивидуальный дизайн
+          по вашим пожеланиям.
         </p>
         <h5 class="stickers__description2">
-          Классный стикерпак - это готовый вирусный контент с вашей айдентикой, который мгновенно разлетится за пределы чата!
+          Ваше трепетное отношение к оценит любой клиент!
         </h5>
       </div>
-      <img class="stickers__smile-img" src="@assets/images/stickers-smile.png" alt="">
+      <img class="stickers__smile-img" src="@assets/images/stickers2-smile.png" alt="">
     </div>
   </TheContainer>
 </template>
@@ -41,39 +45,41 @@
   }
 
   &__image-container {
-    height: 860px;
+    height: 731px;
     position: relative;
   }
 
   &__logo {
     position: absolute;
-    top: 122px;
-    left: 176px;
+    top: 79px;
+    right: 118px;
   }
 
   &__bg-wrapper {
     position: absolute;
-    top: 258px;
+    top: 204px;
     width: 100%;
-    height: 444px;
+    height: 468px;
   }
 
   &__bg-text {
     position: absolute;
-    left: 44px;
-    top: 60px;
-    @include title(var(--color-primary-20), var(--font-size-lg), var(--font-family-primary));
-  }
-
-  &__bg-img {
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    right: 40px;
+    text-align: center;
+    writing-mode: vertical-rl;
+    rotate: 180deg;
     height: 100%;
+    text-transform: uppercase;
+    @include title(var(--color-primary-20), var(--font-size-lg), var(--font-family-primary));
   }
 
   &__main-img {
     position: absolute;
-    max-width: 891px;
-    right: 50px
+    max-width: 862px;
+    left: 102px;
+    top: 30px
   }
 
   &__info-block {
@@ -117,5 +123,7 @@
   &__smile-img {
     width: 180px;
   }
+
+
 }
 </style>
