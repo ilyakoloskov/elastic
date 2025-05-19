@@ -55,7 +55,7 @@
             <img
               alt=""
               class="about-article__pattern"
-              src="@assets/images/about-pattern.png"
+              src="../assets/images/about-pattern.png"
             />
           </div>
           <img

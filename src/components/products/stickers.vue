@@ -9,7 +9,7 @@
         <h4 class="stickers__bg-text">
           мощный инструмент, <br>для узнаваемости вашего бренда
         </h4>
-        <img class="stickers__bg-img" src="@assets/images/about-pattern.png" alt="">
+        <img class="stickers__bg-img" src="../../assets/images/stickers-pattern.png" alt="">
       </div>
       <img class="stickers__main-img" src="@assets/images/free-tablet-mockup.png" alt="">
     </div>
