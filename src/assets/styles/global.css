@@ -10,7 +10,7 @@
   --container-width-xs: calc(360px + calc(var(--container-indent) * 2));
   --container-width-sm: calc(425px + calc(var(--container-indent) * 2));
   --container-width-md: calc(768px + calc(var(--container-indent) * 2));
-  --container-width-lg: calc(1130px + calc(var(--container-indent) * 2));
+  --container-width-lg: calc(1160px + calc(var(--container-indent) * 2));
   --container-width-xl: calc(1280px + calc(var(--container-indent) * 2));
   --container-width-xxl: calc(1400px + calc(var(--container-indent) * 2));
   --container-width-xxxl: calc(2560px + calc(var(--container-indent) * 2));
