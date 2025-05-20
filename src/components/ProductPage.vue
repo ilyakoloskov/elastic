@@ -7,7 +7,7 @@ import Arrow from '@/assets/icons/arrow.svg?component'
     <BackLink class="product-page__back-link"/>
   </TheContainer>
   <slot />
-  <FeedbackForm />
+  <FeedbackFormBlock />
 </template>
 
 <style scoped lang="scss">

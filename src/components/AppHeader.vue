@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import IconTelegram from '@/assets/icons/telegram.svg'
 import IconWhatsApp from '@/assets/icons/whatsapp.svg'
-import ListButton from '@components/ListButton.vue'
 
 interface AppHeaderProps {
   isSticky: boolean
@@ -9,9 +8,23 @@ interface AppHeaderProps {
 }
 
 const props = withDefaults(defineProps<AppHeaderProps>(), { isSticky: true, isScroll: true })
+
+const isOpenModal = ref<boolean>(false)
+const handleOpenModal = (flag: boolean) => {
+  isOpenModal.value = flag
+  console.log(isOpenModal.value)
+}
 </script>
 
 <template>
+  <AppModal v-model:model-value="isOpenModal" @update:model-value="handleOpenModal">
+    <template #header>
+      <p>Оставить заявку</p>
+    </template>
+    <template #content>
+      <FeedBackForm/>
+    </template>
+  </AppModal>
   <header
     :class="[
       'app-header',
@@ -39,7 +52,7 @@ const props = withDefaults(defineProps<AppHeaderProps>(), { isSticky: true, isSc
             ><IconWhatsApp class="app-header__icon"
           /></a>
         </div>
-        <AppButton class="app-header__button">Оставить заявку</AppButton>
+        <AppButton class="app-header__button" @click="() => handleOpenModal(true)">Оставить заявку</AppButton>
       </div>
     </TheContainer>
   </header>

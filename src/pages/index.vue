@@ -1,3 +1,6 @@
+<script setup lang="ts">
+</script>
+
 <template>
   <!-- MAIN-SCREEN -->
   <section class="main-screen">
@@ -217,7 +220,7 @@
       </div>
     </TheContainer>
   </section>
-  <FeedbackForm/>
+  <FeedbackFormBlock/>
 
 
 </template>
@@ -438,5 +441,3 @@
   }
 }
 </style>
-<script setup lang="ts">
-</script>
