@@ -1,5 +1,7 @@
 <script setup>
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import MediaProvider from '~/providers/media/MediaProvider.vue'
+
 const isSticky = ref(true)
 const isScroll = ref(false)
 
@@ -35,14 +37,16 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <AppHeader
-    :is-scroll="isScroll"
-    :is-sticky="isSticky"
-  />
-  <main class="app-main">
-    <slot />
-  </main>
-  <AppFooter />
+  <MediaProvider>
+    <AppHeader
+      :is-scroll="isScroll"
+      :is-sticky="isSticky"
+    />
+    <main class="app-main">
+      <slot />
+    </main>
+    <AppFooter />
+  </MediaProvider>
 </template>
 
 <style lang="scss">

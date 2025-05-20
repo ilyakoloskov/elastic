@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import IconTelegram from '@/assets/icons/telegram.svg'
 import IconWhatsApp from '@/assets/icons/whatsapp.svg'
+import ListButton from '@components/ListButton.vue'
 
 interface AppHeaderProps {
   isSticky: boolean
@@ -66,6 +67,7 @@ const props = withDefaults(defineProps<AppHeaderProps>(), { isSticky: true, isSc
 
   &__container {
     @include flex(space-between);
+    position: relative;
   }
 
   &__inner {
