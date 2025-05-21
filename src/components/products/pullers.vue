@@ -5,7 +5,7 @@
   <TheContainer size="lg" class="pullers pullers__container">
 
     <div>
-      <TheLogotip class="pullers__logo" />
+      <TheLogotipBig class="pullers__logo" />
     </div>
     <div class="pullers__bg-wrapper">
       <img class="pullers__bg-img" src="@assets/images/pullers-pattern.png" alt="">
@@ -44,8 +44,8 @@
 
   &__logo {
     position: absolute;
-    top: 246px;
-    left: 83px;
+    top: 266px;
+    left: 103px;
     rotate: -45deg;
   }
 

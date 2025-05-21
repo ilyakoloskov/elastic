@@ -105,13 +105,14 @@ watch(
 
   &__menu {
     position: absolute;
-    z-index: 100;
+    z-index: 8;
     display: grid;
     grid-template-columns: repeat(4, auto);
     width: 100%;
     background-color: var(--color-primary-10);
     border: 1px solid var(--color-gray-600);
-    border-radius: 6px;
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0 10px 8px 3px rgba(0, 0, 0, 0.1);
 
     &_active {
       animation-name: fade-in;

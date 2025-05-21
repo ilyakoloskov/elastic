@@ -6,7 +6,7 @@
     <div class="brand-book__image-wrapper">
       <div class="brand-book__bg">
         <div class="brand-book__bg-wrapper">
-          <img class="brand-book__bg-img" src="@assets/images/about-pattern-vertical.png" alt="">
+          <img class="brand-book__bg-img" src="../../assets/images/pattern-brandbook.png" alt="">
           <h4 class="brand-book__bg-text">руководство использования <br> корпоративного стиля</h4>
         </div>
         <img src="@assets/images/brandbook1.png" alt="" class="brand-book__image1" />
@@ -16,7 +16,7 @@
     <div class="brand-book__info-block">
       <div class="brand-book__title-wrapper">
         <div class="brand-book__title">
-        <TheLogotip />
+        <TheLogotipBig />
         <h2 class="brand-book__title-text">брендбук</h2>
         </div>
       </div>

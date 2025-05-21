@@ -5,7 +5,7 @@
   <TheContainer size="lg" class="coloring coloring__container">
     <div class="coloring__image-container">
       <div style="width: 96px; height: 96px;">
-        <TheLogotip class="coloring__logo" />
+        <TheLogotipBig class="coloring__logo" />
       </div>
       <div class="coloring__bg-wrapper">
         <h4 class="coloring__bg-text">
@@ -54,7 +54,6 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 20px
   }
 
   &__bg-wrapper {

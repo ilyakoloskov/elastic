@@ -4,7 +4,7 @@
 <template>
   <TheContainer size="lg" class="stickers stickers__container">
     <div class="stickers__image-container">
-      <TheLogotip class="stickers__logo" />
+      <TheLogotipBig class="stickers__logo" />
       <div class="stickers__bg-wrapper">
         <h4 class="stickers__bg-text">
           маленькие истории на <br />

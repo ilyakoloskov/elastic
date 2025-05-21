@@ -15,7 +15,7 @@
     <div class="patches__info-block">
       <div class="patches__title-wrapper">
         <div class="patches__title">
-          <TheLogotip />
+          <TheLogotipBig />
           <h2 class="patches__title-text">ПАТЧИ</h2>
         </div>
       </div>

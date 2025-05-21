@@ -6,7 +6,7 @@
     <div class="kosters__info-block">
       <div class="kosters__title-wrapper">
         <div class="kosters__title">
-          <TheLogotip />
+          <TheLogotipBig />
           <h2 class="kosters__title-text">костеры</h2>
         </div>
       </div>

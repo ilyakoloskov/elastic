@@ -5,7 +5,7 @@
   <TheContainer size="lg" class="magnets magnets__container">
     <div class="magnets__image-container">
       <div>
-        <TheLogotip class="magnets__logo" />
+        <TheLogotipBig class="magnets__logo" />
       </div>
       <div class="magnets__bg-wrapper">
         <h4 class="magnets__bg-text">
@@ -56,7 +56,7 @@
 
   &__logo {
     position: absolute;
-    right: 20px;
+    right: 0;
     bottom: 280px
   }
 

@@ -5,7 +5,7 @@
   <TheContainer size="lg" class="keyrings keyrings__container">
     <div class="keyrings__image-container">
       <div>
-        <TheLogotip class="keyrings__logo" />
+        <TheLogotipBig class="keyrings__logo" />
       </div>
       <div class="keyrings__bg-wrapper">
         <h4 class="keyrings__bg-text">

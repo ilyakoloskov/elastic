@@ -9,7 +9,7 @@
     <div>
       <div class="mascot__title-wrapper">
         <div class="mascot__title">
-          <TheLogotip />
+          <TheLogotipBig />
           <div>
             Разработка <br> персонажа <br> бренда -<br>
             <span class="mascot__text-accent">маскота</span>

@@ -6,7 +6,7 @@
     <div class="stickers3d__info-block">
       <div class="stickers3d__title-wrapper">
         <div class="stickers3d__title">
-          <TheLogotip />
+          <TheLogotipBig />
           <h2 class="stickers3d__title-text">3d-стикеры</h2>
         </div>
       </div>

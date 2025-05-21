@@ -221,8 +221,6 @@
     </TheContainer>
   </section>
   <FeedbackFormBlock/>
-
-
 </template>
 
 <style lang="scss">

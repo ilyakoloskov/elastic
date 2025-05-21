@@ -6,7 +6,7 @@
     <div class="jibits__info-block">
       <div class="jibits__title-wrapper">
         <div class="jibits__title">
-          <TheLogotip />
+          <TheLogotipBig />
           <h2 class="jibits__title-text">ДЖИБИТСЫ</h2>
         </div>
       </div>

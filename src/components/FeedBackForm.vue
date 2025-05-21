@@ -9,6 +9,8 @@
       <AppInput name="email" placeholder="Ваш email*" class="form__input" />
     </div>
     <AppInput name="company" placeholder="Название вашей компании" />
+
+    <AppCheckBox>Я соглашаюсь с Политикой Конфиденциальности сайта</AppCheckBox>
     <AppButton>Отправить заявку</AppButton>
   </form>
 </template>
