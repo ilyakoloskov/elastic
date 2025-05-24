@@ -3,7 +3,7 @@
 import { computed, onMounted, provide, ref } from 'vue'
 import { injectionKey } from './injectionKey'
 import { useEventListener } from '@/composables/useEventListener'
-import { bp, gt, gte, lte } from '@/helpers/breakpoints'
+import { bp, gt, gte, lt, lte } from '@/helpers/breakpoints'
 
 defineSlots<{
   /** Содержимое по умолчанию */
@@ -12,9 +12,9 @@ defineSlots<{
 
 const width = ref<number>(0)
 
-const isMobile = computed<boolean>(() => lte(width.value, bp.sm))
-const isTablet = computed<boolean>(() => gt(width.value, bp.sm) && lte(width.value, bp.md))
-const isDesktop = computed<boolean>(() => gte(width.value, bp.md))
+const isMobile = computed<boolean>(() => lte(width.value, bp.sm)) // <= 425
+const isTablet = computed<boolean>(() => gt(width.value, bp.sm) && lt(width.value, bp.lg)) //  425 <= x < 1024
+const isDesktop = computed<boolean>(() => gte(width.value, bp.lg)) // >= 1024
 
 const handleResize = () => {
   width.value = window.innerWidth
