@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-// TODO: нужен рефакторинг, подумать как сделать реактивный title лучше
 import { computed, provide, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'

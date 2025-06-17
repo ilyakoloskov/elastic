@@ -51,9 +51,11 @@ const close = () => {
           class="app-modal"
           style="position: relative"
         >
-          <img src="@/assets/images/form-smile.png" alt=""
-               style="position: absolute; top: 0; right: 65px; z-index: 200; transform: translateY(-131px)"
-          >
+          <img
+            alt=""
+            class="app-modal__image"
+            src="@/assets/images/form-smile.png"
+          />
           <TransitionChild
             as="template"
             enter="enter-active"
@@ -101,7 +103,6 @@ const close = () => {
 </template>
 
 <style lang="scss">
-
 .app-modal-container {
   position: fixed;
   top: 0;
@@ -116,21 +117,23 @@ const close = () => {
 }
 
 .app-modal {
-  width: 100%;
+  width: 95%;
   max-width: 600px;
 
   &__inner {
+    position: relative;
+    z-index: 201;
     max-height: 600px;
     padding: 55px 40px;
     overflow-y: auto;
-    background-color: var(--color-background);
-    border-radius: 6px;
-    box-shadow: 2px 4px 24px 0 rgba(0, 0, 0, 0.12);
-    will-change: transform, opacity;
 
     // кастомный scrollbar
     scrollbar-color: var(--color-gray-700) transparent;
     scrollbar-width: thin;
+    background-color: var(--color-background);
+    border-radius: 6px;
+    box-shadow: 2px 4px 24px 0 rgba(0, 0, 0, 0.12);
+    will-change: transform, opacity;
 
     /* Для Chrome и других браузеров, кроме Firefox */
 
@@ -168,15 +171,24 @@ const close = () => {
     justify-content: center;
     width: 20px;
     height: 20px;
+    cursor: pointer;
     background-color: transparent;
     border: none;
     outline: 0;
-    cursor: pointer;
   }
 
   &__btn-close-icon {
     width: 20px;
     height: 20px;
+  }
+
+  &__image {
+    position: absolute;
+    top: 0;
+    right: 65px;
+    z-index: 200;
+    max-width: 222px;
+    transform: translateY(-131px);
   }
 }
 

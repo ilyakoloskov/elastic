@@ -1,38 +1,42 @@
+<script setup lang="ts">
+import Telegram from '@/assets/icons/telegram.svg?component'
+import Whatsapp from '@/assets/icons/whatsapp.svg?component'
+</script>
+
 <template>
   <footer class="app-footer">
-    <TheContainer class="app-footer__container">
+    <AppContainer class="app-footer__container">
       <div class="app-footer__main-block">
-        <TheLogotip/>
-        <div class="app-footer__info-block">
-        <div class="app-footer__contacts">
-          <div class="app-footer__messengers">
-            <Telegram/>
-            <Whatsapp/>
+        <TheLogotip />
+        <div class="app-footer__info">
+          <div class="app-footer__contacts">
+            <div class="app-footer__messengers">
+              <Telegram />
+              <Whatsapp />
+            </div>
+            <a
+              class="app-footer__phone"
+              href="tel:+79870771041"
+            >
+              +7 987 077-10-41
+            </a>
+            <div>Ваш персональный менеджер Екатерина</div>
           </div>
-          <div class="app-footer__phone">
-            +7 987 077-10-41
+          <div class="app-footer__contacts">
+            <div class="app-footer__address">
+              г. Пенза, ул. Дружбы, 6 (Технопарк “Яблочков”), оф. 415
+            </div>
+            <div>пн-пт с 9:00 до 17:00</div>
           </div>
-          <div>
-            Ваш персональный менеджер Екатерина
-          </div>
-        </div>
-        <div class="app-footer__contacts">
-          <div class="app-footer__address">
-            г. Пенза, ул. Дружбы, 6 (Технопарк “Яблочков”), оф. 415
-          </div>
-          <div>
-            пн-пт с 9:00 до 17:00
-          </div>
-        </div>
         </div>
       </div>
-      <hr class="app-footer__hr"/>
+      <hr class="app-footer__hr" />
       <div class="app-footer__links">
         <div>© 2025 Elastic. Все права защищены</div>
         <div>Пользовательское соглашение</div>
         <div>Политика конфиденциальности</div>
       </div>
-    </TheContainer>
+    </AppContainer>
   </footer>
 </template>
 
@@ -41,7 +45,9 @@
   height: var(--footer-height);
   background-color: var(--color-primary-200);
 
-  &__messengers, &__phone, &__address {
+  &__messengers,
+  &__phone,
+  &__address {
     color: var(--color-primary-20);
   }
 
@@ -50,18 +56,18 @@
     padding: 30px 0 40px;
   }
 
-  &__info-block {
+  &__info {
     display: flex;
     gap: 32px;
   }
 
   &__contacts {
-    height: auto;
-    max-width: 250px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     gap: 8px;
+    justify-content: center;
+    max-width: 250px;
+    height: auto;
   }
 
   &__messengers {
@@ -70,8 +76,12 @@
   }
 
   &__phone {
+    font-size: 24px;
     font-weight: 700;
-    font-size: 24px
+  }
+
+  &__phone:hover {
+    color: var(--color-accent-200);
   }
 
   &__hr {
@@ -80,12 +90,8 @@
 
   &__links {
     display: flex;
-    margin-top: var(--spacing-lg);
     gap: 32px;
+    margin-top: var(--spacing-lg);
   }
 }
 </style>
-<script setup lang="ts">
-import Telegram from '@/assets/icons/telegram.svg?component'
-import Whatsapp from '@/assets/icons/whatsapp.svg?component'
-</script>

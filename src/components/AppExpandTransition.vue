@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-// TODO: нужен рефакторинг, мб можно избавиться от shown
 const props = defineProps<{
-  /** Изменяет состояние показан|скрыт */
   shown?: boolean
 }>()
 

@@ -99,6 +99,7 @@ html {
   color: var(--color-primary-100);
   background-color: var(--color-primary-10);
   transition: var(--transition);
+  /* scroll-behavior: smooth; */
 }
 
 .app {
@@ -110,4 +111,9 @@ html {
   @supports not (min-height: 100svh) {
     min-height: 100vh;
   }
+}
+
+.text-accent {
+  font-weight: 500;
+  color: var(--color-accent-200);
 }

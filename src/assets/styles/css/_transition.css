@@ -8,3 +8,22 @@
   filter: blur(5px);
   opacity: 0;
 }
+
+.page-leave-active {
+  overflow: hidden !important;
+}
+
+.layout-enter-active,
+.layout-leave-active {
+  transition: all var(--transition-page);
+}
+
+.layout-enter-from,
+.layout-leave-to {
+  filter: blur(5px);
+  opacity: 0;
+}
+
+.layout-leave-active {
+  overflow: hidden !important;
+}

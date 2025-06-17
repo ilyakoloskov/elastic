@@ -4,6 +4,7 @@ import svgLoader from 'vite-svg-loader'
 export default defineNuxtConfig({
   devtools: { enabled: false },
   ssr: true,
+  // TODO: Сделать мета теги и title
 
   webpack: {
     extractCSS: false,
@@ -20,7 +21,8 @@ export default defineNuxtConfig({
     },
 
     pageTransition: { name: 'page', mode: 'out-in' },
-    layoutTransition: { name: 'slide', mode: 'out-in' },
+
+    layoutTransition: { name: 'layout', mode: 'out-in' },
   },
   css: ['@/assets/styles/global.css'],
 

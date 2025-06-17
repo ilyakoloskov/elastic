@@ -99,7 +99,7 @@ const onFocus = () => {
   gap: 4px;
 
   padding: 10px 20px;
-  border-radius: var(--border-radius-md);
+  border-radius: var(--border-radius-lg);
   border: 2px solid var(--color-primary-200);
   transition: var(--transition-hover);
 

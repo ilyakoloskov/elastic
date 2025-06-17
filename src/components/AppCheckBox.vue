@@ -85,6 +85,7 @@ const slots = defineSlots<{
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
+  cursor: pointer;
 
   &_disabled {
     opacity: 0.6;

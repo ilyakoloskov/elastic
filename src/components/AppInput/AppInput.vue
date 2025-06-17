@@ -23,7 +23,7 @@ const props = withDefaults(defineProps<AppInputProps>(), {
   required: false,
   readonly: false,
   full: false,
-  autocomplete: '',
+  autocomplete: 'on',
   size: 'xs',
   variant: 'solid',
 })
@@ -68,6 +68,7 @@ const debouncedModelValue = debounce((value: string | number) => {
     :required="props.required"
     :style="attrs.style"
   >
+    {{ props.error }}
     <div class="app-input__wrapper">
       <div class="app-input__inner">
         <span

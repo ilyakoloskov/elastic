@@ -2,59 +2,87 @@
 import IconTelegram from '@/assets/icons/telegram.svg'
 import IconWhatsApp from '@/assets/icons/whatsapp.svg'
 
+import { useMedia } from '~/composables/useMedia'
+
+const props = withDefaults(defineProps<AppHeaderProps>(), { isSticky: true, isScroll: true })
+
+const { isDesktop } = useMedia()
+
 interface AppHeaderProps {
   isSticky: boolean
   isScroll: boolean
 }
 
-const props = withDefaults(defineProps<AppHeaderProps>(), { isSticky: true, isScroll: true })
-
 const isOpenModal = ref<boolean>(false)
 const handleOpenModal = (flag: boolean) => {
   isOpenModal.value = flag
-  console.log(isOpenModal.value)
 }
 </script>
 
 <template>
-  <AppModal v-model:model-value="isOpenModal" @update:model-value="handleOpenModal">
+  <AppModal
+    v-model:model-value="isOpenModal"
+    class="modal-form"
+    @update:model-value="handleOpenModal"
+  >
     <template #header>
-      <p>Оставить заявку</p>
+      <h4 class="modal-form__title">Оставить заявку</h4>
     </template>
     <template #content>
-      <FeedBackForm/>
+      <FeedBackForm />
     </template>
   </AppModal>
   <header
     :class="[
       'app-header',
-      { 'app-header_is-sticky': props.isSticky, 'app-header__is-scroll': props.isScroll },
+      { 'app-header_is-sticky': props.isSticky, 'app-header_is-scrolling': props.isScroll },
     ]"
   >
-    <TheContainer class="app-header__container">
-      <NuxtLink
-        class="app-header__logo-link"
-        to="/"
-      >
-        <TheLogotip />
-      </NuxtLink>
-      <TheNavigation class="app-header__navigation" />
-      <div class="app-header__actions">
-        <div class="app-header__inner">
-          <a
-            class="app-header__action"
-            href="#"
-            ><IconTelegram class="app-header__icon"
-          /></a>
-          <a
-            class="app-header__action"
-            href="#"
-            ><IconWhatsApp class="app-header__icon"
-          /></a>
+    <AppContainer class="app-header__container">
+      <template v-if="isDesktop">
+        <NuxtLink
+          class="app-header__logo"
+          to="/"
+        >
+          <TheLogotip />
+        </NuxtLink>
+        <TheNavigation class="app-header__navigation" />
+        <div class="app-header__actions">
+          <div class="app-header__inner">
+            <a
+              class="app-header__action"
+              href="#"
+              ><IconTelegram class="app-header__icon"
+            /></a>
+            <a
+              class="app-header__action"
+              href="#"
+              ><IconWhatsApp class="app-header__icon"
+            /></a>
+          </div>
+          <AppButton
+            class="app-header__button"
+            @click="() => handleOpenModal(true)"
+            >Оставить заявку</AppButton
+          >
         </div>
-        <AppButton class="app-header__button" @click="() => handleOpenModal(true)">Оставить заявку</AppButton>
-      </div>
-    </TheContainer>
+      </template>
+
+      <template v-else>
+        <NuxtLink
+          class="app-header__logo"
+          to="/"
+        >
+          <TheLogotip />
+        </NuxtLink>
+
+        <AppButton
+          class="app-header__button"
+          @click="() => handleOpenModal(true)"
+          >Оставить заявку</AppButton
+        >
+      </template>
+    </AppContainer>
   </header>
 </template>
 
@@ -73,7 +101,7 @@ const handleOpenModal = (flag: boolean) => {
     z-index: 9;
   }
 
-  &__is-scroll {
+  &_is-scrolling {
     box-shadow: 0 -6px 10px 5px rgba(0, 0, 0, 0.5);
     transition: var(--transition);
   }
@@ -86,6 +114,10 @@ const handleOpenModal = (flag: boolean) => {
   &__inner {
     @include flex(center);
     gap: 20px;
+  }
+
+  &__logo {
+    cursor: pointer;
   }
 
   &__actions {
