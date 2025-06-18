@@ -49,7 +49,6 @@ const close = () => {
         <div
           v-bind="$attrs"
           class="app-modal"
-          style="position: relative"
         >
           <img
             alt=""
@@ -117,6 +116,7 @@ const close = () => {
 }
 
 .app-modal {
+  position: relative;
   width: 95%;
   max-width: 600px;
 

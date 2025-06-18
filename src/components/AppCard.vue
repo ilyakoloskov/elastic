@@ -1,10 +1,10 @@
 <script setup lang="ts">
 const props = withDefaults(
   defineProps<{
-    image: string
+    image?: string
     name?: string
-    to: string
-    category: string
+    to?: string
+    category?: string
   }>(),
   {
     name: 'Product name',

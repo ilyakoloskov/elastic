@@ -10,7 +10,7 @@ definePageMeta({
 <template>
   <div class="products-list">
     <AppContainer class="product-list__container">
-      <h1 class="product-list__title">Изделия из ПВХ</h1>
+      <h1 class="product-list__title">{{ products.label }}</h1>
       <div class="product-list__wrapper">
         <AppCard
           v-for="item in products.items"

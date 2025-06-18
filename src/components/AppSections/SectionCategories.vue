@@ -16,7 +16,6 @@ import ArrowExpand from '@/assets/icons/arrow-expand.svg?component'
           alt=""
           class="categories__personage"
           src="@assets/images/categories-personage-2.png"
-          style="max-width: 568px"
         />
 
         <div class="categories__info">
@@ -130,7 +129,7 @@ import ArrowExpand from '@/assets/icons/arrow-expand.svg?component'
     position: absolute;
     right: 0;
     bottom: 0;
-    max-width: 667px;
+    max-width: 568px;
   }
 
   &__box {

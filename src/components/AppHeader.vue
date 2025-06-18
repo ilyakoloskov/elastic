@@ -20,6 +20,7 @@ const handleOpenModal = (flag: boolean) => {
 </script>
 
 <template>
+  <!-- TODO: Вынести в компонент -->
   <AppModal
     v-model:model-value="isOpenModal"
     class="modal-form"
@@ -73,14 +74,18 @@ const handleOpenModal = (flag: boolean) => {
           class="app-header__logo"
           to="/"
         >
-          <TheLogotip />
+          <TheLogotip size="sm" />
         </NuxtLink>
 
-        <AppButton
-          class="app-header__button"
-          @click="() => handleOpenModal(true)"
-          >Оставить заявку</AppButton
-        >
+        <div class="app-header__inner">
+          <AppButton
+            class="app-header__button"
+            @click="() => handleOpenModal(true)"
+            >Оставить заявку</AppButton
+          >
+
+          <AppNavigationMobile />
+        </div>
       </template>
     </AppContainer>
   </header>

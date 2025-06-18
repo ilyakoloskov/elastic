@@ -1,14 +1,29 @@
 <script lang="ts" setup>
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { defineNuxtLink } from 'nuxt/app'
 import { vClickOutside } from '@/directives/vClickOutside'
 import { useMedia } from '@/composables/useMedia'
 import IconCaret from '@/assets/icons/caret-down.svg?component'
 
-const props = defineProps({
-  label: String,
-  category: String,
-  items: Array<any>,
+const props = withDefaults(
+  defineProps<{
+    label: string
+    category: string
+    items?: Array<any>
+    component?: string
+  }>(),
+  {
+    label: 'Label name',
+    category: 'Category name',
+  }
+)
+
+const currenctComponent = computed(() => {
+  console.log(props.component)
+  if (props.component === 'NuxtLink') return resolveComponent('NuxtLink')
+
+  return 'button'
 })
 
 const { isDesktop } = useMedia()
@@ -40,15 +55,24 @@ watch(
 </script>
 
 <template>
-  <NuxtLink
+  <component
+    :is="currenctComponent"
     v-click-outside="handleClickOutside"
+    :class="[
+      `the-navigation-link`,
+      {
+        'the-navigation-link_mobile': !isDesktop,
+      },
+    ]"
     :to="`/${props.category}`"
-    class="the-navigation-link"
     @mouseenter="handleShow(true)"
     @mouseleave="handleShow(false)"
   >
     <span
-      :class="['the-navigation-link__label', { 'the-navigation-link_active': isOpen }]"
+      :class="[
+        'the-navigation-link__label',
+        { 'the-navigation-link_active': isOpen, 'the-navigation-link__label_mobile': !isDesktop },
+      ]"
       type="button"
       @click="handleClick"
     >
@@ -69,23 +93,49 @@ watch(
         { 'the-navigation-link__menu_desktop': isDesktop },
       ]"
     >
-      <div class="the-navigation-link__menu-name">{{ props.label }}</div>
+      <div
+        v-if="isDesktop"
+        class="the-navigation-link__menu-name"
+      >
+        {{ props.label }}
+      </div>
       <div class="the-navigation-link__menu-items">
         <NuxtLink
           v-for="item in items"
           :key="item.link"
-          :class="['the-navigation-link__menu-link']"
+          :class="[
+            'the-navigation-link__menu-link',
+            {
+              'the-navigation-link__menu-link_mobile': !isDesktop,
+            },
+          ]"
           :to="`/${props.category}/${item.link}`"
         >
           {{ item.label }}
         </NuxtLink>
       </div>
     </div>
-  </NuxtLink>
+  </component>
 </template>
 
 <style lang="scss">
 .the-navigation-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: var(--color-primary-200);
+
+  &_mobile {
+    width: 100%;
+    padding: 16px 0;
+    background-color: var(--color-primary-10);
+    border-bottom: 1px solid var(--color-primary-100);
+  }
+
+  &_default {
+    border: none;
+  }
+
   &_active {
     text-decoration: underline;
   }
@@ -100,12 +150,18 @@ watch(
     gap: var(--spacing-m);
     align-items: center;
     justify-content: center;
-    height: var(--header-height);
     color: var(--color-primary-200);
     text-decoration: none;
     cursor: pointer;
     background-color: transparent;
     border: none;
+  }
+
+  &__label_mobile {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 18px;
   }
 
   &:hover .the-navigation-link__label,
@@ -137,8 +193,20 @@ watch(
     }
 
     &_mobile {
-      right: 0;
-      bottom: 100%;
+      position: relative;
+      align-items: start;
+      padding: 0;
+      box-shadow: none;
+
+      .the-navigation-link__label {
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .the-navigation-link__menu-items {
+        display: flex;
+        flex-direction: column;
+      }
     }
 
     &_desktop {
@@ -184,6 +252,12 @@ watch(
 
   &__menu-link_active {
     border-bottom: 1px solid var(--color-accent-200);
+  }
+
+  &__menu-link_mobile {
+    padding: 16px 0;
+    font-weight: 400;
+    color: var(--color-primary-100);
   }
 }
 </style>

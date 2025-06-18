@@ -1,20 +1,50 @@
+<script setup lang="ts">
+const items = [1, 2, 3, 4, 5, 6, 7, 8, 5, 6, 7, 8, 5, 6, 7, 8]
+
+const chunkSize = 5
+
+const getChunks = (array: number[]) => {
+  const result: (number | string)[][] = []
+
+  for (let i = 0; i < array.length; i += chunkSize) {
+    const chunk = array.slice(i, i + chunkSize)
+    result.push(chunk)
+  }
+
+  return result
+}
+
+const chunks = getChunks(items)
+</script>
+
 <template>
   <section class="product-cards">
     <AppContainer class="product-cards__container">
-      <a
-        v-for="item in 7"
-        :key="item"
-        class="product-card"
-        href="#"
+      <template
+        v-for="(chunk, index) in chunks"
+        :key="index"
       >
-        <img
-          alt=""
-          class="product-card__img"
-          src="@assets/images/stub-image.jpg"
-        />
-        <span class="product-card__name">Lorem ipsum dolor sit amet</span>
-        <div class="product-card__overlay" />
-      </a>
+        <a
+          v-for="(item, itemIndex) in chunk"
+          :key="itemIndex"
+          :class="[
+            'product-card',
+            {
+              'product-card_md': itemIndex + 1 < 3 || chunk.length < 3,
+              'product-card_lg': chunk.length < 2,
+            },
+          ]"
+          href="#"
+        >
+          <img
+            alt=""
+            class="product-card__img"
+            src="@assets/images/stub-image.jpg"
+          />
+          <span class="product-card__name">Lorem ipsum dolor sit amet {{ item }} </span>
+          <div class="product-card__overlay" />
+        </a>
+      </template>
     </AppContainer>
   </section>
 </template>
@@ -23,23 +53,22 @@
 .product-cards {
   &__container {
     display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-columns: repeat(6, 1fr);
     gap: 24px;
   }
 }
 
 .product-card {
   position: relative;
-  grid-column: span 4 / span 4;
-
+  grid-column: span 2;
   overflow: hidden;
 
-  &:nth-child(1) {
-    grid-column: 1/7;
+  &_md {
+    grid-column: span 3;
   }
 
-  &:nth-child(2) {
-    grid-column: 7/-1;
+  &_lg {
+    grid-column: span 6;
   }
 
   &__overlay {

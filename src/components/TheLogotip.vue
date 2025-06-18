@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const props = withDefaults(
   defineProps<{
-    size: string
+    size?: string
   }>(),
   {
     size: 'md',
@@ -24,6 +24,10 @@ const props = withDefaults(
 <style lang="scss">
 .the-logo {
   @include box(74px);
+
+  &_sm {
+    @include box(40px);
+  }
 
   &_lg {
     @include box(100px);

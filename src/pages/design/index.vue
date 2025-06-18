@@ -1,17 +1,24 @@
 <script setup>
+import { useNavigation } from '@/composables/useNavigationStore'
+
+const { design } = useNavigation()
 definePageMeta({
   layout: 'category',
 })
 </script>
 
 <template>
-  <div class="products-list">
+  <div class="design-list">
     <AppContainer class="product-list__container">
-      <h1 class="product-list__title">Дизайн</h1>
+      <h1 class="product-list__title">{{ design.label }}</h1>
       <div class="product-list__wrapper">
         <AppCard
-          v-for="item in 6"
+          v-for="item in design.items"
           :key="item"
+          :category="design.category"
+          :image="item.image"
+          :name="item.label"
+          :to="item.link"
           class="product-list__item"
         />
       </div>

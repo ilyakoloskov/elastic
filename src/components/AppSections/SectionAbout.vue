@@ -106,6 +106,10 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-md);
+
+    @media screen and (max-width: 1280px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__info {
