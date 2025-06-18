@@ -15,7 +15,6 @@ defineOptions({
 
 const props = withDefaults(defineProps<AppInputProps>(), {
   modelValue: '',
-  label: 'Введите текст',
   placeholder: 'Введите текст',
   type: 'text',
   loading: false,
@@ -68,7 +67,6 @@ const debouncedModelValue = debounce((value: string | number) => {
     :required="props.required"
     :style="attrs.style"
   >
-    {{ props.error }}
     <div class="app-input__wrapper">
       <div class="app-input__inner">
         <span

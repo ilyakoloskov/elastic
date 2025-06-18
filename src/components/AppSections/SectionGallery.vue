@@ -18,8 +18,8 @@ const chunks = getChunks(items)
 </script>
 
 <template>
-  <section class="product-cards">
-    <AppContainer class="product-cards__container">
+  <section class="gallery">
+    <AppContainer class="gallery__container">
       <template
         v-for="(chunk, index) in chunks"
         :key="index"
@@ -28,21 +28,21 @@ const chunks = getChunks(items)
           v-for="(item, itemIndex) in chunk"
           :key="itemIndex"
           :class="[
-            'product-card',
+            'gallery-item',
             {
-              'product-card_md': itemIndex + 1 < 3 || chunk.length < 3,
-              'product-card_lg': chunk.length < 2,
+              'gallery-item_md': itemIndex + 1 < 3 || chunk.length < 3,
+              'gallery-item_lg': chunk.length < 2,
             },
           ]"
           href="#"
         >
           <img
             alt=""
-            class="product-card__img"
+            class="gallery-item__img"
             src="@assets/images/stub-image.jpg"
           />
-          <span class="product-card__name">Lorem ipsum dolor sit amet {{ item }} </span>
-          <div class="product-card__overlay" />
+          <span class="gallery-item__name">Lorem ipsum dolor sit amet {{ item }} </span>
+          <div class="gallery-item__overlay" />
         </a>
       </template>
     </AppContainer>
@@ -50,7 +50,7 @@ const chunks = getChunks(items)
 </template>
 
 <style lang="scss">
-.product-cards {
+.gallery {
   &__container {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -58,7 +58,7 @@ const chunks = getChunks(items)
   }
 }
 
-.product-card {
+.gallery-item {
   position: relative;
   grid-column: span 2;
   overflow: hidden;
@@ -104,18 +104,18 @@ const chunks = getChunks(items)
   }
 
   &:hover {
-    .product-card__img {
+    .gallery-item__img {
       transition: var(--transition);
       transform: scale(1.2);
     }
 
-    .product-card__name {
+    .gallery-item__name {
       bottom: 48px;
       left: 48px;
       transition: var(--transition);
     }
 
-    .product-card__overlay {
+    .gallery-item__overlay {
       background-color: rgba(0, 0, 0, 0.4);
       transition: var(--transition);
     }

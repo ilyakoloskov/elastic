@@ -8,6 +8,6 @@ definePageMeta({
   <div class="product-body">
     <SectionJibits />
 
-    <SectionProductCards />
+    <SectionGallery />
   </div>
 </template>

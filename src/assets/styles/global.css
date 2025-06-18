@@ -76,7 +76,7 @@
 
   /** Sizes */
   --header-height: 88px;
-  --footer-height: 303px;
+  --footer-height: min-height(303px);
 
   /** Transtions */
   --transition: 0.3s;

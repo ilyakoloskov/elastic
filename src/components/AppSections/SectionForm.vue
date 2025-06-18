@@ -5,9 +5,9 @@
         <h2 class="section-form__title1">Сделайте первый шаг к <b>успешному проекту</b></h2>
         <FeedBackForm />
         <img
-          src="@assets/images/request-2.png"
           alt="form-image"
           class="section-form__image"
+          src="@assets/images/request-2.png"
         />
       </div>
     </AppContainer>

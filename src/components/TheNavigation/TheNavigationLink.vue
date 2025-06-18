@@ -20,7 +20,6 @@ const props = withDefaults(
 )
 
 const currenctComponent = computed(() => {
-  console.log(props.component)
   if (props.component === 'NuxtLink') return resolveComponent('NuxtLink')
 
   return 'button'
