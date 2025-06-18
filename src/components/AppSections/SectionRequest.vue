@@ -25,6 +25,7 @@
     </AppContainer>
   </section>
 </template>
+
 <style lang="scss">
 // SUBMIT-REQUEST
 
@@ -45,6 +46,11 @@
 
     max-width: 331px;
     margin-bottom: 45px;
+
+    @media screen and (max-width: 768px) {
+      margin-top: 20px;
+      margin-bottom: 0;
+    }
   }
 
   &__wrapper {
@@ -52,11 +58,19 @@
     gap: var(--spacing-md);
     align-items: end;
 
-    margin-top: -125px;
+    @media screen and (max-width: 768px) {
+      margin: 0;
+    }
   }
 
   &__personage {
     max-width: 531px;
+
+    @media screen and (max-width: 768px) {
+      align-self: start;
+      max-width: 205px;
+      margin-top: -20px;
+    }
   }
 
   &__description {

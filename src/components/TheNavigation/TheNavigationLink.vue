@@ -126,8 +126,13 @@ watch(
   color: var(--color-primary-200);
 
   &_mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: start;
     width: 100%;
     padding: 16px 0;
+    text-align: left;
     background-color: var(--color-primary-10);
     border-bottom: 1px solid var(--color-primary-100);
   }
@@ -256,7 +261,8 @@ watch(
 
   &__menu-link_mobile {
     padding: 16px 0;
-    font-weight: 400;
+    font-size: 18px;
+    font-weight: 500;
     color: var(--color-primary-100);
   }
 }

@@ -84,6 +84,9 @@ const { products, design } = useNavigation()
     .the-navigation__item {
       width: 100%;
       height: 100%;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--color-primary-200);
     }
   }
 

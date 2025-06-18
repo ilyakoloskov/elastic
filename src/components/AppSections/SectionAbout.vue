@@ -78,6 +78,10 @@
     gap: var(--spacing-md);
     padding-top: var(--spacing-3xl);
     padding-bottom: var(--spacing-3xl);
+
+    @media screen and (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
   }
 }
 

@@ -46,6 +46,10 @@
     align-self: stretch;
 
     max-width: var(--container-width-xl);
+
+    @media screen and (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__img {
@@ -72,6 +76,10 @@
   &__advantages {
     @include flex(center);
     gap: var(--spacing-md);
+
+    @media screen and (max-width: 768px) {
+      justify-content: start;
+    }
   }
 }
 

@@ -51,9 +51,18 @@ import Whatsapp from '@/assets/icons/whatsapp.svg?component'
     color: var(--color-primary-20);
   }
 
-  &__main-block {
+  &__main-block,
+  &__info,
+  &__links {
     @include flex(space-between);
     padding: 30px 0 40px;
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      gap: 20px;
+      align-items: start;
+      padding: 16px 0;
+    }
   }
 
   &__info {

@@ -130,6 +130,10 @@ import ArrowExpand from '@/assets/icons/arrow-expand.svg?component'
     right: 0;
     bottom: 0;
     max-width: 568px;
+
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
   }
 
   &__box {
@@ -146,6 +150,10 @@ import ArrowExpand from '@/assets/icons/arrow-expand.svg?component'
     gap: var(--spacing-md);
     align-items: stretch;
     max-width: 804px;
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
   }
 
   &__navigation {
@@ -159,6 +167,10 @@ import ArrowExpand from '@/assets/icons/arrow-expand.svg?component'
     grid-template-columns: repeat(4, 1fr);
     gap: 40px;
     margin-top: 24px;
+
+    @media screen and (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   &__link {
