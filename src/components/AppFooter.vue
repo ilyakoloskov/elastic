@@ -1,13 +1,24 @@
 <script setup lang="ts">
 import Telegram from '@/assets/icons/telegram.svg?component'
 import Whatsapp from '@/assets/icons/whatsapp.svg?component'
+
+const router = useRouter()
+const isMainPage = computed(() => {
+  return router.currentRoute.value.fullPath === '/'
+})
 </script>
 
 <template>
   <footer class="app-footer">
     <AppContainer class="app-footer__container">
       <div class="app-footer__main-block">
-        <TheLogotip />
+        <NuxtLink
+          to="/"
+          class="app-footer__logo"
+          :class="{ 'app-footer__logo_disabled': isMainPage }"
+        >
+          <TheLogotip />
+        </NuxtLink>
         <div class="app-footer__info">
           <div class="app-footer__contacts">
             <div class="app-footer__messengers">
@@ -44,6 +55,10 @@ import Whatsapp from '@/assets/icons/whatsapp.svg?component'
 .app-footer {
   height: var(--footer-height);
   background-color: var(--color-primary-200);
+
+  &__logo_disabled {
+    cursor: auto;
+  }
 
   &__messengers,
   &__phone,

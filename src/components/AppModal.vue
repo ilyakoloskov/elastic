@@ -130,8 +130,8 @@ const close = () => {
     // кастомный scrollbar
     scrollbar-color: var(--color-gray-700) transparent;
     scrollbar-width: thin;
-    background-color: var(--color-background);
-    border-radius: 6px;
+    background-color: var(--color-primary-10);
+    border-radius: 24px;
     box-shadow: 2px 4px 24px 0 rgba(0, 0, 0, 0.12);
     will-change: transform, opacity;
 
@@ -169,8 +169,8 @@ const close = () => {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 20px;
-    height: 20px;
+    width: 48px;
+    height: 48px;
     cursor: pointer;
     background-color: transparent;
     border: none;
@@ -178,15 +178,15 @@ const close = () => {
   }
 
   &__btn-close-icon {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
   }
 
   &__image {
     position: absolute;
     top: 0;
     right: 65px;
-    z-index: 200;
+    z-index: 202;
     max-width: 222px;
     transform: translateY(-131px);
   }

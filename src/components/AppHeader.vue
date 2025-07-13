@@ -1,48 +1,32 @@
-<script setup lang="ts">
+<script setup>
 import IconTelegram from '@/assets/icons/telegram.svg'
 import IconWhatsApp from '@/assets/icons/whatsapp.svg'
 
-import { useMedia } from '~/composables/useMedia'
+import { useMedia } from '@/composables/useMedia'
 
-const props = withDefaults(defineProps<AppHeaderProps>(), { isSticky: true, isScroll: true })
+const { handleOpenModal } = inject('stateModalForm')
 
 const { isDesktop } = useMedia()
 
-interface AppHeaderProps {
-  isSticky: boolean
-  isScroll: boolean
+const showFormModal = () => {
+  handleOpenModal(true)
 }
 
-const isOpenModal = ref<boolean>(false)
-const handleOpenModal = (flag: boolean) => {
-  isOpenModal.value = flag
-}
+const router = useRouter()
+const isMainPage = computed(() => {
+  return router.currentRoute.value.fullPath === '/'
+})
 </script>
 
 <template>
-  <!-- TODO: Вынести в компонент -->
-  <AppModal
-    v-model:model-value="isOpenModal"
-    class="modal-form"
-    @update:model-value="handleOpenModal"
-  >
-    <template #header>
-      <h4 class="modal-form__title">Оставить заявку</h4>
-    </template>
-    <template #content>
-      <FeedBackForm />
-    </template>
-  </AppModal>
-  <header
-    :class="[
-      'app-header',
-      { 'app-header_is-sticky': props.isSticky, 'app-header_is-scrolling': props.isScroll },
-    ]"
-  >
+  <header class="app-header app-header_is-sticky">
     <AppContainer class="app-header__container">
       <template v-if="isDesktop">
         <NuxtLink
           class="app-header__logo"
+          :class="{
+            'app-header__logo_disabled': isMainPage,
+          }"
           to="/"
         >
           <TheLogotip />
@@ -63,7 +47,7 @@ const handleOpenModal = (flag: boolean) => {
           </div>
           <AppButton
             class="app-header__button"
-            @click="() => handleOpenModal(true)"
+            @click="showFormModal"
             >Оставить заявку</AppButton
           >
         </div>
@@ -80,7 +64,7 @@ const handleOpenModal = (flag: boolean) => {
         <div class="app-header__inner">
           <AppButton
             class="app-header__button"
-            @click="() => handleOpenModal(true)"
+            @click="showFormModal"
             >Оставить заявку</AppButton
           >
 
@@ -103,12 +87,7 @@ const handleOpenModal = (flag: boolean) => {
   &_is-sticky {
     position: sticky;
     top: 0;
-    z-index: 9;
-  }
-
-  &_is-scrolling {
-    box-shadow: 0 -6px 10px 5px rgba(0, 0, 0, 0.5);
-    transition: var(--transition);
+    z-index: 10;
   }
 
   &__container {
@@ -123,6 +102,10 @@ const handleOpenModal = (flag: boolean) => {
 
   &__logo {
     cursor: pointer;
+  }
+
+  &__logo_disabled {
+    cursor: auto;
   }
 
   &__actions {

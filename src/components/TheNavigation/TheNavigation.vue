@@ -19,20 +19,22 @@ const { products, design } = useNavigation()
       <ul :class="[`the-navigation__list`, { 'the-navigation__list_is-mobile': !isDesktop }]">
         <li class="the-navigation__item">
           <TheNavigationLink
-            :category="products.category"
-            :component="!isDesktop ? 'div' : 'NuxtLink'"
-            :items="products.items"
-            :label="products.label"
-          />
-        </li>
-        <li class="the-navigation__item">
-          <TheNavigationLink
             :category="design.category"
             :component="!isDesktop ? 'div' : 'NuxtLink'"
             :items="design.items"
             :label="design.label"
           />
         </li>
+
+        <li class="the-navigation__item">
+          <TheNavigationLink
+            :category="products.category"
+            :component="!isDesktop ? 'div' : 'NuxtLink'"
+            :items="products.items"
+            :label="products.label"
+          />
+        </li>
+
         <li class="the-navigation__item">
           <NuxtLink
             :class="[
@@ -40,7 +42,7 @@ const { products, design } = useNavigation()
               `the-navigation-link_default`,
               { 'the-navigation-link_mobile': !isDesktop },
             ]"
-            to="/#about"
+            to="/about"
             >О нас</NuxtLink
           >
         </li>
@@ -67,12 +69,13 @@ const { products, design } = useNavigation()
     display: flex;
     align-items: center;
     height: 100%;
+    padding: 0 20px;
   }
 
   &__list {
     @include flex(center);
-    gap: var(--spacing-lg);
     justify-content: space-between;
+    // gap: var(--spacing-lg);
   }
 
   &__list_is-mobile {
@@ -92,8 +95,10 @@ const { products, design } = useNavigation()
 
   &__link {
     display: flex;
+    min-width: 128px;
     height: 100%;
     padding: 33px 0;
+
     color: var(--color-primary-200);
   }
 

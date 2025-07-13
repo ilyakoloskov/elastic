@@ -1,94 +1,82 @@
 <script setup lang="ts">
 import ArrowExpand from '@/assets/icons/arrow-expand.svg?component'
+const props = defineProps({
+  navigation: {
+    type: Object,
+  },
+
+  direction: {
+    type: String,
+  },
+})
 </script>
 
 <template>
   <section class="categories">
     <AppContainer class="categories__container">
       <div class="categories__wrapper">
-        <img
-          alt=""
-          class="categories__img"
-          src="@assets/images/categories-2.png"
-        />
-        <!-- TODO: Рефактор -->
-        <img
-          alt=""
-          class="categories__personage"
-          src="@assets/images/categories-personage-2.png"
-        />
-
-        <div class="categories__info">
-          <div class="categories__inner">
-            <div class="categories__box">
-              <h2 class="categories__title">Lorem ipsum</h2>
-              <strong class="categories__subtitle">
-                Ut enim ad minim veniam, quis nostrud
-                <b class="categories__b">exercitation</b>
-              </strong>
-            </div>
-
-            <p class="categories__description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-              dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            </p>
-          </div>
-
-          <nav class="categories__navigation">
-            <ul class="categories__list">
-              <li class="categories__item">
-                <NuxtLink
-                  class="categories__link"
-                  to="/design/stickers"
-                  >Стикеры
-                  <ArrowExpand class="categories__link-icon" />
-                </NuxtLink>
-              </li>
-              <li class="categories__item">
-                <NuxtLink
-                  class="categories__link"
-                  to="/design/stickers3d"
-                  >3D-стикеры
-                  <ArrowExpand class="categories__link-icon" />
-                </NuxtLink>
-              </li>
-              <li class="categories__item">
-                <NuxtLink
-                  class="categories__link"
-                  to="/design/stickers-tg"
-                  >Тг-стикеры
-                  <ArrowExpand class="categories__link-icon" />
-                </NuxtLink>
-              </li>
-              <li class="categories__item">
-                <NuxtLink
-                  class="categories__link"
-                  to="/design/coloring"
-                  >Раскраски
-                  <ArrowExpand class="categories__link-icon" />
-                </NuxtLink>
-              </li>
-              <li class="categories__item">
-                <NuxtLink
-                  class="categories__link"
-                  to="/design/brandbook"
-                  >Брендбук
-                  <ArrowExpand class="categories__link-icon" />
-                </NuxtLink>
-              </li>
-              <li class="categories__item">
-                <NuxtLink
-                  class="categories__link"
-                  to="/design/mascot"
-                  >Маскот
-                  <ArrowExpand class="categories__link-icon" />
-                </NuxtLink>
-              </li>
-            </ul>
-          </nav>
+        <div class="categories__img">
+          <slot name="img">
+            <img
+              alt=""
+              class="categories__img"
+              src="@assets/images/categories-2.png"
+            />
+          </slot>
         </div>
+
+        <div class="categories__wrap">
+          <slot name="personage">
+            <img
+              alt=""
+              class="categories__personage"
+              src="@assets/images/categories-personage-2.png"
+            />
+          </slot>
+
+          <div
+            class="categories__info"
+            :class="{
+              categories__info_start: props.direction === 'left',
+            }"
+          >
+            <div class="categories__inner">
+              <div class="categories__box">
+                <h2 class="categories__title">
+                  <slot name="title" />
+                </h2>
+                <strong class="categories__subtitle">
+                  <slot name="subtitle" />
+                </strong>
+              </div>
+
+              <p class="categories__description">
+                <slot name="description" />
+              </p>
+            </div>
+          </div>
+        </div>
+        <nav
+          class="categories__navigation"
+          :class="{
+            categories__navigation_start: props.direction === 'left',
+          }"
+        >
+          <ul class="categories__list">
+            <li
+              class="categories__item"
+              v-for="item in props.navigation?.items"
+              :key="item.link"
+            >
+              <NuxtLink
+                class="categories__link"
+                :to="`${props.navigation?.category}/${item.link}`"
+                >{{ item.label }}
+                <ArrowExpand class="categories__link-icon" />
+              </NuxtLink>
+            </li>
+          </ul>
+        </nav>
       </div>
     </AppContainer>
   </section>
@@ -105,6 +93,12 @@ import ArrowExpand from '@/assets/icons/arrow-expand.svg?component'
     position: relative;
   }
 
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+    margin-top: -330px;
+  }
+
   &__title {
     @include title(var(--color-primary-200), var(--font-size-lx));
   }
@@ -115,10 +109,6 @@ import ArrowExpand from '@/assets/icons/arrow-expand.svg?component'
     text-transform: uppercase;
   }
 
-  &__b {
-    color: var(--color-accent-200);
-  }
-
   &__img {
     width: 100%;
     margin-bottom: var(--spacing-xl);
@@ -126,9 +116,6 @@ import ArrowExpand from '@/assets/icons/arrow-expand.svg?component'
   }
 
   &__personage {
-    position: absolute;
-    right: 0;
-    bottom: 0;
     max-width: 568px;
 
     @media screen and (max-width: 768px) {
@@ -156,21 +143,30 @@ import ArrowExpand from '@/assets/icons/arrow-expand.svg?component'
     }
   }
 
+  &__info {
+    align-self: end;
+  }
+
+  &__info_start {
+    order: -1;
+  }
+
   &__navigation {
     display: flex;
     gap: 10px;
+    justify-self: end;
     max-width: 923px;
   }
 
+  &__navigation_start {
+    justify-self: start;
+  }
+
   &__list {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 40px;
     margin-top: 24px;
-
-    @media screen and (max-width: 768px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
   }
 
   &__link {
@@ -178,6 +174,7 @@ import ArrowExpand from '@/assets/icons/arrow-expand.svg?component'
     gap: 55px;
     align-items: center;
     justify-content: space-between;
+    min-width: 184px;
     padding: 12px 0;
     font-size: 18px;
     color: var(--color-primary-200);

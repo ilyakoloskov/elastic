@@ -1,3 +1,11 @@
+<script setup>
+const { handleOpenModal } = inject('stateModalForm')
+
+const showFormModal = () => {
+  handleOpenModal(true)
+}
+</script>
+
 <template>
   <section class="submit-request">
     <AppContainer
@@ -19,7 +27,11 @@
           <p class="submit-request__description">
             Оставьте заявку, и наш менеджер свяжется с вами в течение 5 минут.
           </p>
-          <AppButton class="submit-request__btn">Оставить заявку</AppButton>
+          <AppButton
+            @click="showFormModal"
+            class="submit-request__btn"
+            >Оставить заявку</AppButton
+          >
         </div>
       </div>
     </AppContainer>
@@ -27,8 +39,6 @@
 </template>
 
 <style lang="scss">
-// SUBMIT-REQUEST
-
 .submit-request {
   &__container {
     padding-top: var(--spacing-3xl);
@@ -57,6 +67,7 @@
     display: flex;
     gap: var(--spacing-md);
     align-items: end;
+    margin-top: -120px;
 
     @media screen and (max-width: 768px) {
       margin: 0;

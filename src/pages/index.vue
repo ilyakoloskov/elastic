@@ -4,11 +4,11 @@
 
     <SectionAbout />
 
-    <SectionCategories />
+    <SectionCategoriesDesign />
 
     <SectionRequest />
 
-    <SectionCategories />
+    <SectionCategoriesProducts />
 
     <SectionForm />
   </div>

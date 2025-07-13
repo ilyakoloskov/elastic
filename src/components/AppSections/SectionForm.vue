@@ -2,7 +2,9 @@
   <section class="section-form">
     <AppContainer class="section-form__container">
       <div class="section-form__wrapper">
-        <h2 class="section-form__title1">Сделайте первый шаг к <b>успешному проекту</b></h2>
+        <h2 class="section-form__title">
+          Сделайте первый шаг к <strong class="section-form__strong">успешному проекту!</strong>
+        </h2>
         <FeedBackForm />
         <img
           alt="form-image"
@@ -29,11 +31,12 @@
     margin: 0 auto;
   }
 
-  &__title1 {
+  &__title {
+    text-align: center;
     @include title(var(--color-primary-200), var(--font-size-lx));
   }
 
-  &__title2 {
+  &__strong {
     @include title(var(--color-accent-100), var(--font-size-lx));
   }
 

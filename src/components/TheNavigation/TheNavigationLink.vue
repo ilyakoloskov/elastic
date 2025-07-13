@@ -5,6 +5,7 @@ import { defineNuxtLink } from 'nuxt/app'
 import { vClickOutside } from '@/directives/vClickOutside'
 import { useMedia } from '@/composables/useMedia'
 import IconCaret from '@/assets/icons/caret-down.svg?component'
+import { set } from 'lodash-es'
 
 const props = withDefaults(
   defineProps<{
@@ -29,7 +30,13 @@ const { isDesktop } = useMedia()
 
 const isOpen = ref<boolean>(false)
 const handleShow = (flag: boolean) => {
-  if (isDesktop.value) isOpen.value = flag
+  if (isOpen.value) {
+    setTimeout(() => {
+      isOpen.value = flag
+    }, 300)
+  } else {
+    isOpen.value = flag
+  }
 }
 const handleClick = () => {
   isOpen.value = !isOpen.value
@@ -91,6 +98,7 @@ watch(
         { 'the-navigation-link__menu_mobile': !isDesktop },
         { 'the-navigation-link__menu_desktop': isDesktop },
       ]"
+      @mouseenter="handleShow(true)"
     >
       <div
         v-if="isDesktop"
@@ -168,6 +176,7 @@ watch(
     font-size: 18px;
   }
 
+  &:hover,
   &:hover .the-navigation-link__label,
   .the-navigation-link__icon {
     color: var(--color-accent-200);

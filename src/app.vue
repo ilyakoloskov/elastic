@@ -1,49 +1,36 @@
 <script setup>
-import { onBeforeUnmount, onMounted, ref } from 'vue'
-import MediaProvider from '~/providers/media/MediaProvider.vue'
+import MediaProvider from '@/providers/media/MediaProvider'
 
-const isSticky = ref(true)
-const isScroll = ref(false)
-
-const handleScroll = () => {
-  isScroll.value = Boolean(window.scrollY > 0)
+const isOpenModal = ref(false)
+const handleOpenModal = (flag) => {
+  isOpenModal.value = flag
 }
-
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
+provide('stateModalForm', {
+  isOpenModal,
+  handleOpenModal,
 })
-
-onBeforeUnmount(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
-
-// const animations = {
-//   header: {
-//     animation: { from: { y: -60 }, to: { y: 0 } },
-//     type: 'from',
-//     duration: 1,
-//     clearStyle: true,
-//   },
-//   footer: {
-//     animation: { from: { y: 60 }, to: { y: 0 } },
-//     type: 'from',
-//     duration: 1,
-//     clearStyle: true,
-//     delay: 1,
-//   },
-// }
 </script>
 
 <template>
   <MediaProvider>
-    <AppHeader
-      :is-scroll="isScroll"
-      :is-sticky="isSticky"
-    />
+    <AppHeader />
     <NuxtLayout class="app-main">
       <NuxtPage />
     </NuxtLayout>
     <AppFooter />
+
+    <AppModal
+      v-model:model-value="isOpenModal"
+      class="modal-form"
+      @update:model-value="handleOpenModal"
+    >
+      <template #header>
+        <h4 class="modal-form__title">Оставить заявку</h4>
+      </template>
+      <template #content>
+        <FeedBackForm />
+      </template>
+    </AppModal>
   </MediaProvider>
 </template>
 

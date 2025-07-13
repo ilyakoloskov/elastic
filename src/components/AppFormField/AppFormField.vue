@@ -12,7 +12,6 @@ const props = defineProps<{
 }>()
 
 defineSlots<{
-  /** Содержимое по умолчанию */
   default: (props: { id: string }) => unknown
 }>()
 
