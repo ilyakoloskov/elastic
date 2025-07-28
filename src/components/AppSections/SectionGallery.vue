@@ -1,5 +1,8 @@
 <script setup lang="ts">
-const items = [1, 2, 3, 4, 5, 6, 7, 8, 5, 6, 7, 8, 5, 6, 7, 8]
+// TODO: Пофиксить вместе с попапом
+const props = defineProps({
+  items: Array,
+})
 
 const chunkSize = 5
 
@@ -14,7 +17,7 @@ const getChunks = (array: number[]) => {
   return result
 }
 
-const chunks = getChunks(items)
+const chunks = getChunks(props.items)
 </script>
 
 <template>

@@ -1,6 +1,10 @@
 <script setup>
 const { handleOpenModal } = inject('stateModalForm')
 
+const props = defineProps({
+  data: Object,
+})
+
 const showFormModal = () => {
   handleOpenModal(true)
 }
@@ -15,17 +19,17 @@ const showFormModal = () => {
       <img
         alt=""
         class="submit-request__img"
-        src="@assets/images/submit-request.png"
+        :src="data.banner"
       />
       <div class="submit-request__wrapper">
         <img
           alt=""
           class="submit-request__personage"
-          src="@assets/images/submit-request-personage.png"
+          :src="data.personage"
         />
         <div class="submit-request__box">
           <p class="submit-request__description">
-            Оставьте заявку, и наш менеджер свяжется с вами в течение 5 минут.
+            {{ data.text }}
           </p>
           <AppButton
             @click="showFormModal"

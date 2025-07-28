@@ -1,8 +1,11 @@
+<script setup>
+const props = defineProps({
+  data: Object,
+})
+</script>
+
 <template>
-  <section
-    id="about"
-    class="about"
-  >
+  <section class="about">
     <AppContainer class="about__container">
       <article class="about-article">
         <img
@@ -12,14 +15,11 @@
         />
         <div class="about-article__inner">
           <div class="about-article__info">
-            <h2 class="about-article__title">О нас</h2>
+            <h2 class="about-article__title">
+              {{ data.title }}
+            </h2>
             <p class="about-article__description">
-              Быстро найдём самые действенные решения для вашего бренда и удержим фокус на
-              результате.
-            </p>
-            <p class="about-article__description">
-              Наши изделия не пылятся в ящике, а органично встраиваются в жизнь клиентов и создают
-              естественный повод для разговора о вашем бренде
+              {{ data.text1 }}
             </p>
             <img
               alt=""
@@ -39,22 +39,15 @@
         <div class="about-article__inner">
           <div class="about-article__column">
             <p class="about-article__description">
-              «ELASTIC» - бренд-студия, специализирующаяся на разработке айдентики. Каждый проект
-              начинается с изучения вашего бизнеса, ценностей и аудитории. Наша задача — создать не
-              просто набор графических элементов, а продуманную систему визуальной коммуникации.
-              Логотип, цвета, шрифты, маскот — всё это будет работать вместе, чтобы ваш бренд
-              запомнили, полюбили и выбрали.
+              {{ data.text2 }}
             </p>
           </div>
           <div class="about-article__column about-article__info">
             <p class="about-article__description">
-              Наш подход сочетает актуальные тренды с индивидуальными решениями. Завершенные проекты
-              получают полный пакет файлов во всех необходимых форматах и руководство по
-              использованию фирменного стиля.
+              {{ data.text3 }}
             </p>
             <strong class="about-article__strong">
-              Мы точно знаем какой именно мерч понравится вашим коллегам и друзьям, и что сейчас в
-              тренде!
+              {{ data.text4 }}
             </strong>
           </div>
         </div>
@@ -120,6 +113,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
+    justify-content: space-between;
   }
 }
 </style>

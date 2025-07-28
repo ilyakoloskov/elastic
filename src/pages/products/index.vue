@@ -1,24 +1,28 @@
 <script setup>
-import { useNavigation } from '@/composables/useNavigationStore'
-
-const { products } = useNavigation()
 definePageMeta({
   layout: 'category',
 })
+
+const { data, pending, error } = useApiFetch('products/')
 </script>
 
 <template>
   <div class="products-list">
-    <AppContainer class="product-list__container">
-      <h1 class="product-list__title">{{ products.label }}</h1>
+    <template v-if="pending">
+      <AppLoader />
+    </template>
+    <AppContainer
+      class="product-list__container"
+      v-else
+    >
+      <h1 class="product-list__title">{{ data.seo.title }}</h1>
       <div class="product-list__wrapper">
         <AppCard
-          v-for="item in products.items"
-          :key="item"
-          :category="products.category"
-          :image="item.image"
-          :name="item.label"
-          :to="item.link"
+          v-for="item in data.products"
+          :key="item.id"
+          :url="item.url"
+          :image="item.img"
+          :name="item.name"
           class="product-list__item"
         />
       </div>

@@ -3,8 +3,7 @@ const props = withDefaults(
   defineProps<{
     image?: string
     name?: string
-    to?: string
-    category?: string
+    url?: string
   }>(),
   {
     name: 'Product name',
@@ -14,13 +13,13 @@ const props = withDefaults(
 
 <template>
   <NuxtLink
-    :to="`${props.category}/${props.to}`"
+    :to="props.url"
     class="app-card"
   >
     <img
       alt=""
       class="app-card__img"
-      src="@assets/images/stub-image.jpg"
+      :src="props.image"
     />
     <span class="app-card__name">{{ props.name }}</span>
     <div class="app-card__overlay" />
@@ -30,6 +29,7 @@ const props = withDefaults(
 <style lang="scss">
 .app-card {
   position: relative;
+  max-height: 391px;
   overflow: hidden;
   cursor: pointer;
 

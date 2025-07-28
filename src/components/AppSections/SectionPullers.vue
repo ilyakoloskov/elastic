@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { useMedia } from '~/composables/useMedia'
 
+const props = defineProps({
+  data: Object,
+})
 const { isDesktop } = useMedia()
 </script>
 
@@ -13,7 +16,7 @@ const { isDesktop } = useMedia()
       v-if="!isDesktop"
       class="pullers__title-block"
     >
-      <h2 class="pullers__title">ПУЛЛЕРЫ</h2>
+      <h1 class="pullers__title">{{ props.data.product.title }}</h1>
       <h4 class="pullers__title-description">
         <span class="pullers__text-accent">ФУНКЦИОНАЛЬНЫЙ АКССЕСУАР</span>,<br />
         ДЛЯ УДОБНОГО УПРАВЛЕНИЯ МОЛНИЕЙ
@@ -41,13 +44,13 @@ const { isDesktop } = useMedia()
         v-if="isDesktop"
         alt=""
         class="pullers__main-img2"
-        src="../../assets/images/pullers-sticker-smile.png"
+        src="@assets/images/pullers-sticker-smile.png"
       />
       <img
         v-if="!isDesktop"
         alt=""
         class="pullers__main-img3"
-        src="../../assets/images/pullers-sticker.png"
+        src="@/assets/images/pullers-sticker.png"
       />
       <img
         v-if="!isDesktop"
@@ -60,40 +63,28 @@ const { isDesktop } = useMedia()
         class="pullers__info"
       >
         <div class="pullers__title-block">
-          <h2 class="pullers__title">ПУЛЛЕРЫ</h2>
-          <h4 class="pullers__title-description">
-            <span class="pullers__text-accent">ФУНКЦИОНАЛЬНЫЙ АКССЕСУАР</span>, ДЛЯ УДОБНОГО
-            УПРАВЛЕНИЯ МОЛНИЕЙ
-          </h4>
+          <h1 class="pullers__title">{{ props.data.product.title }}</h1>
+          <h4
+            class="pullers__title-description"
+            v-html="props?.data?.product.slogan"
+          ></h4>
         </div>
-        <div class="pullers__description-block">
-          <p class="pullers__description1">
-            Пуллер представляет собой небольшой элемент, который прикрепляется к молнии на одежде
-            или сумке. Его главная функция — обеспечить удобное управление молнией.
-            <br /><br />
-            Пуллер — способ выделиться, как для брендов, так и для любителей персонализировать
-            акссесуары. Индивидуальный дизайн или необычная форма делают продукт запоминающимся.
-          </p>
-          <h5 class="pullers__description2">
-            Маленькая, но незаменимая деталь, сделает жизнь проще и приятнее!
-          </h5>
-        </div>
+        <div
+          class="pullers__description-block"
+          v-html="props?.data?.product.text"
+        />
+        <h5 class="pullers__feature">{{ props.data.product.feature }}</h5>
       </div>
     </div>
     <div
       v-if="!isDesktop"
       class="pullers__description-block"
     >
-      <p class="pullers__description1">
-        Пуллер представляет собой небольшой элемент, который прикрепляется к молнии на одежде или
-        сумке. Его главная функция — обеспечить удобное управление молнией.
-        <br /><br />
-        Пуллер — способ выделиться, как для брендов, так и для любителей персонализировать
-        акссесуары. Индивидуальный дизайн или необычная форма делают продукт запоминающимся.
-      </p>
-      <h5 class="pullers__description2">
-        Маленькая, но незаменимая деталь, сделает жизнь проще и приятнее!
-      </h5>
+      <div
+        class="pullers__description-block"
+        v-html="props?.data?.product.text"
+      />
+      <h5 class="pullers__feature">{{ props.data.product.feature }}</h5>
     </div>
   </AppContainer>
 </template>
@@ -221,7 +212,7 @@ const { isDesktop } = useMedia()
     }
   }
 
-  &__text-accent {
+  &__title-description span {
     color: var(--color-accent-100);
   }
 
@@ -238,13 +229,13 @@ const { isDesktop } = useMedia()
     }
   }
 
-  &__description1 {
+  &__description-block p {
     @include lte($md) {
       font-size: var(--font-size-sm);
     }
   }
 
-  &__description2 {
+  &__feature {
     color: var(--color-primary-200);
   }
 }

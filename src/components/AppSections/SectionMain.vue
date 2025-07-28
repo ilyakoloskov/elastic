@@ -1,28 +1,34 @@
+<script setup>
+const props = defineProps({
+  data: Object,
+})
+</script>
+
 <template>
   <section class="main-screen">
     <AppContainer class="main-screen__container">
       <img
         alt=""
         class="main-screen__img"
-        src="@assets/images/main-screen.png"
+        :src="data.banner"
       />
 
       <div class="main-screen__info">
         <div class="main-screen__inner">
-          <h1 class="main-screen__title">бренд-студия elastic</h1>
+          <h1 class="main-screen__title">
+            {{ data.title }}
+          </h1>
           <p class="main-screen__description">
-            Ваш надежный партнер в создании уникальных дизайнов и креативных решений. Мы помогаем
-            брендам выделяться и вдохновлять своих клиентов.
+            {{ data.text }}
           </p>
         </div>
         <div class="main-screen__advantages">
-          <div class="advantages-item">
-            <strong class="advantages-item__title">200</strong>
-            <p class="advantages-item__description">Успешно выполненных проектов</p>
-          </div>
-          <div class="advantages-item">
-            <strong class="advantages-item__title">10+</strong>
-            <p class="advantages-item__description">Лет опыта в дизайне и разработке</p>
+          <div
+            class="advantages-item"
+            v-for="item in data.advantages"
+          >
+            <strong class="advantages-item__title">{{ item.title }}</strong>
+            <p class="advantages-item__description">{{ item.description }}</p>
           </div>
         </div>
       </div>

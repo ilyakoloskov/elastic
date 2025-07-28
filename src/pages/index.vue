@@ -1,15 +1,33 @@
+<script setup>
+import { useApiFetch } from '@/composables/useApiFetch'
+
+const { data, pending, error } = useApiFetch('home/')
+
+const seo = computed(() => data.value?.seo || {})
+const main = computed(() => data.value?.main || {})
+const about = computed(() => data.value?.about || {})
+const design = computed(() => data.value?.design || {})
+const callback = computed(() => data.value?.callback || {})
+const products = computed(() => data.value?.products || {})
+</script>
+
 <template>
   <div class="main-page">
-    <SectionMain />
+    <template v-if="pending">
+      <AppLoader />
+    </template>
+    <template v-else>
+      <SectionMain :data="main" />
 
-    <SectionAbout />
+      <SectionAbout :data="about" />
 
-    <SectionCategoriesDesign />
+      <SectionCategoriesDesign :data="design" />
 
-    <SectionRequest />
+      <SectionRequest :data="callback" />
 
-    <SectionCategoriesProducts />
+      <SectionCategoriesProducts :data="products" />
 
-    <SectionForm />
+      <SectionForm />
+    </template>
   </div>
 </template>

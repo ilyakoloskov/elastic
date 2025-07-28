@@ -16,23 +16,11 @@ const props = defineProps({
     <AppContainer class="categories__container">
       <div class="categories__wrapper">
         <div class="categories__img">
-          <slot name="img">
-            <img
-              alt=""
-              class="categories__img"
-              src="@assets/images/categories-2.png"
-            />
-          </slot>
+          <slot name="img" />
         </div>
 
         <div class="categories__wrap">
-          <slot name="personage">
-            <img
-              alt=""
-              class="categories__personage"
-              src="@assets/images/categories-personage-2.png"
-            />
-          </slot>
+          <slot name="personage" />
 
           <div
             class="categories__info"
@@ -70,7 +58,7 @@ const props = defineProps({
             >
               <NuxtLink
                 class="categories__link"
-                :to="`${props.navigation?.category}/${item.link}`"
+                :to="`${props.navigation?.url}${item.link}`"
                 >{{ item.label }}
                 <ArrowExpand class="categories__link-icon" />
               </NuxtLink>
@@ -107,6 +95,11 @@ const props = defineProps({
     font-size: var(--font-size-lg);
     color: var(--color-primary-200);
     text-transform: uppercase;
+  }
+
+  &__subtitle span {
+    font-weight: 600;
+    color: var(--color-accent-200);
   }
 
   &__img {

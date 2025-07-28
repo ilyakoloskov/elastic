@@ -7,7 +7,5 @@ definePageMeta({
 <template>
   <div class="product-body">
     <SectionJibits />
-
-    <SectionGallery />
   </div>
 </template>

@@ -1,11 +1,9 @@
 <script lang="ts" setup>
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { defineNuxtLink } from 'nuxt/app'
 import { vClickOutside } from '@/directives/vClickOutside'
 import { useMedia } from '@/composables/useMedia'
 import IconCaret from '@/assets/icons/caret-down.svg?component'
-import { set } from 'lodash-es'
 
 const props = withDefaults(
   defineProps<{
@@ -70,7 +68,7 @@ watch(
         'the-navigation-link_mobile': !isDesktop,
       },
     ]"
-    :to="`/${props.category}`"
+    :to="props.category"
     @mouseenter="handleShow(true)"
     @mouseleave="handleShow(false)"
   >
@@ -116,7 +114,7 @@ watch(
               'the-navigation-link__menu-link_mobile': !isDesktop,
             },
           ]"
-          :to="`/${props.category}/${item.link}`"
+          :to="`${props.category}${item.link}`"
         >
           {{ item.label }}
         </NuxtLink>

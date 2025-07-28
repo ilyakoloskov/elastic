@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useMedia } from '~/composables/useMedia'
-import { useNavigation } from '@/composables/useNavigationStore'
+import { useMedia } from '@/composables/useMedia'
+import { useGlobals } from '@/composables/useGlobals'
 
 const { isDesktop } = useMedia()
-const { products, design } = useNavigation()
+const { getNavigation } = useGlobals()
 </script>
 
 <template>
@@ -19,19 +19,19 @@ const { products, design } = useNavigation()
       <ul :class="[`the-navigation__list`, { 'the-navigation__list_is-mobile': !isDesktop }]">
         <li class="the-navigation__item">
           <TheNavigationLink
-            :category="design.category"
+            :category="getNavigation.designItems.url"
             :component="!isDesktop ? 'div' : 'NuxtLink'"
-            :items="design.items"
-            :label="design.label"
+            :items="getNavigation.designItems.items"
+            :label="getNavigation.designItems.label"
           />
         </li>
 
         <li class="the-navigation__item">
           <TheNavigationLink
-            :category="products.category"
+            :category="getNavigation.productsItems.url"
             :component="!isDesktop ? 'div' : 'NuxtLink'"
-            :items="products.items"
-            :label="products.label"
+            :items="getNavigation.productsItems.items"
+            :label="getNavigation.productsItems.label"
           />
         </li>
 
@@ -42,8 +42,8 @@ const { products, design } = useNavigation()
               `the-navigation-link_default`,
               { 'the-navigation-link_mobile': !isDesktop },
             ]"
-            to="/about"
-            >О нас</NuxtLink
+            :to="`${getNavigation.about.url}`"
+            >{{ getNavigation.about.title }}</NuxtLink
           >
         </li>
       </ul>

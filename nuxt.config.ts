@@ -10,6 +10,13 @@ export default defineNuxtConfig({
     extractCSS: false,
   },
 
+  runtimeConfig: {
+    apiSecret: '',
+    public: {
+      apiBaseUrl: 'NUXT_PUBLIC_API_BASE_URL',
+    },
+  },
+
   app: {
     rootId: 'app',
     rootAttrs: {
