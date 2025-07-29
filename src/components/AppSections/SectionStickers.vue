@@ -21,7 +21,7 @@ const props = defineProps({
           <h4
             class="stickers__subtitle"
             v-html="props.data.slogan"
-          ></h4>
+          />
         </div>
         <div class="stickers__description">
           <div v-html="props.data.text" />

@@ -73,6 +73,7 @@
   --border-radius-md: 6px;
   --border-radius-lg: 8px;
   --border-radius-xl: 10px;
+  --border-radius-xxl: 12px;
 
   /** Sizes */
   --header-height: 88px;

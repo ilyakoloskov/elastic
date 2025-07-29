@@ -33,12 +33,12 @@ const errorMessages = {
   email: 'Введите корректный адрес электронной почты.',
 }
 
-const submitForm = () => {
+const submitForm = async () => {
   v$.value.$touch()
   if (v$.value.$invalid) return
-  else {
-    console.log('send')
-  }
+  await useApiFetch('callback/', 'POST', {
+    body: JSON.stringify(model),
+  })
 }
 </script>
 

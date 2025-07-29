@@ -5,7 +5,6 @@ const { data, pending, error } = useApiFetch('home/')
 
 const seo = computed(() => data.value?.seo || {})
 const main = computed(() => data.value?.main || {})
-const about = computed(() => data.value?.about || {})
 const design = computed(() => data.value?.design || {})
 const callback = computed(() => data.value?.callback || {})
 const products = computed(() => data.value?.products || {})
@@ -19,7 +18,8 @@ const products = computed(() => data.value?.products || {})
     <template v-else>
       <SectionMain :data="main" />
 
-      <SectionAbout :data="about" />
+      <SectionAdvantages />
+      <!-- <SectionAbout :data="about" /> -->
 
       <SectionCategoriesDesign :data="design" />
 

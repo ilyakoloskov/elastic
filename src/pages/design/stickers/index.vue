@@ -13,10 +13,7 @@ definePageMeta({
       <AppLoader />
     </template>
     <template v-else>
-      <SectionStickers
-        :data="stickers.design"
-        :pending="pending"
-      />
+      <SectionStickers :data="stickers.design" />
 
       <SectionGallery :items="stickers.gallery" />
     </template>
