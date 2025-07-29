@@ -2,6 +2,9 @@
 import Telegram from '@/assets/icons/telegram.svg?component'
 import Whatsapp from '@/assets/icons/whatsapp.svg?component'
 
+import { useGlobals } from '@/composables/useGlobals'
+const { getSocials, getPhone, getAddress } = useGlobals()
+
 const router = useRouter()
 const isMainPage = computed(() => {
   return router.currentRoute.value.fullPath === '/'
@@ -22,22 +25,32 @@ const isMainPage = computed(() => {
         <div class="app-footer__info">
           <div class="app-footer__contacts">
             <div class="app-footer__messengers">
-              <Telegram />
-              <Whatsapp />
+              <a
+                class="app-footer__social"
+                :href="getSocials.telegram"
+              >
+                <Telegram />
+              </a>
+              <a
+                class="app-footer__social"
+                :href="getSocials.whatsApp"
+              >
+                <Whatsapp />
+              </a>
             </div>
             <a
               class="app-footer__phone"
-              href="tel:+79870771041"
+              :href="getPhone.link"
             >
-              +7 987 077-10-41
+              {{ getPhone.phone }}
             </a>
-            <div>Ваш персональный менеджер Екатерина</div>
+            <div>{{ getPhone.caption }}</div>
           </div>
           <div class="app-footer__contacts">
             <div class="app-footer__address">
-              г. Пенза, ул. Дружбы, 6 (Технопарк “Яблочков”), оф. 415
+              {{ getAddress.address }}
             </div>
-            <div>пн-пт с 9:00 до 17:00</div>
+            <div>{{ getAddress.caption }}</div>
           </div>
         </div>
       </div>
@@ -116,6 +129,14 @@ const isMainPage = computed(() => {
     display: flex;
     gap: 32px;
     margin-top: var(--spacing-lg);
+  }
+
+  &__social {
+    color: var(--color-primary-10);
+  }
+
+  &__social:hover {
+    color: var(--color-accent-200);
   }
 }
 </style>

@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { useMedia } from '~/composables/useMedia'
+const props = defineProps({
+  data: Object,
+})
 
 const { isDesktop } = useMedia()
 </script>
@@ -16,22 +19,17 @@ const { isDesktop } = useMedia()
           class="jibits__inner"
         >
           <TheLogotip size="lg" />
-          <h2 class="jibits__title">ДЖИБИТСЫ</h2>
+          <h1 class="jibits__title">{{ props.data.title }}</h1>
         </div>
         <h4 class="jibits__subtitle">
-          ОТЛИЧНЫЙ СПОСОБ ПОДЧЕРКНУТЬ
-          <span class="text-accent">СВОЮ ИНДИВИДУАЛЬНОСТЬ</span>
+          {{ props.data.slogan }}
         </h4>
-        <p class="jibits__description">
-          Джибитсы — это стильные, функциональные и съёмные украшения, которые крепятся на кроксы,
-          браслеты или чехлы для телефона, добавляя индивидуальности вашему образу. Они созданы для
-          тех, кто любит выделяться и ценит детали.
-          <br /><br />
-          Вы можете выбирать джибитсы под настроение: сегодня это яркие фрукты, завтра — космические
-          планеты, а послезавтра — нежные цветы.
-        </p>
+        <div
+          v-html="props.data.text"
+          class="jibits__description"
+        />
         <strong class="jibits__strong">
-          Лёгкие, прочные и влагостойкие, они созданы для активной жизни!
+          {{ props.data.feature }}
         </strong>
         <img
           alt=""
@@ -114,6 +112,10 @@ const { isDesktop } = useMedia()
     @include lte($md) {
       font-size: 14px;
     }
+  }
+
+  &__subtitle span {
+    color: var(--color-accent-200);
   }
 
   &__description {

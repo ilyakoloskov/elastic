@@ -1,3 +1,9 @@
+<script setup lang="ts">
+const props = defineProps({
+  data: Object,
+})
+</script>
+
 <template>
   <section class="stickers">
     <AppContainer
@@ -11,20 +17,15 @@
       />
       <div class="stickers__info">
         <div class="stickers__inner">
-          <h2 class="stickers__title">Стикеры</h2>
-          <h4 class="stickers__subtitle">
-            <span class="text-accent">яркий способ </span>сделать обычные вещи необычными
-          </h4>
+          <h1 class="stickers__title">{{ props.data.title }}</h1>
+          <h4
+            class="stickers__subtitle"
+            v-html="props.data.slogan"
+          ></h4>
         </div>
         <div class="stickers__description">
-          <p class="stickers__text">
-            Каждый стикер, оставленный в том или ином месте (или подаренный кому‑то) является
-            ненавязчивой рекламой бренда, что приводит к большей узнаваемости компании. Если
-            приложить стикер к заказу, это обязательно оставит хорошее впечатление. У клиента
-            возникнут приятные ассоциации. На стикере можно разместить москота или логотип компании.
-            Мы воплотим в жизнь любой индивидуальный дизайн по вашим пожеланиям.
-          </p>
-          <strong class="stickers__strong">Ваше трепетное отношение к оценит любой клиент!</strong>
+          <div v-html="props.data.text" />
+          <strong class="stickers__strong">{{ props.data.feature }}</strong>
         </div>
         <img
           alt=""
@@ -88,7 +89,7 @@
     }
   }
 
-  &__text-accent {
+  &__subtitle span {
     color: var(--color-accent-100);
   }
 

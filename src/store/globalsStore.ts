@@ -23,9 +23,10 @@ export const useGlobalsStore = defineStore('globals', {
   },
   actions: {
     setGlobalsData(data: any) {
+      console.log(data)
       this.navigation = data?.header?.navigation
       this.socials = data?.footer?.socials
-      this.phone = data?.footer.phones
+      this.phone = data?.footer.phone
       this.address = data?.footer?.address
     },
   },

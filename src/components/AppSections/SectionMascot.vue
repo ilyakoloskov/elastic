@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { useMedia } from '~/composables/useMedia'
-
 const { isDesktop } = useMedia()
+// TODO: Здесь не все данные в запросе
+const props = defineProps({
+  data: Object,
+})
 </script>
 
 <template>

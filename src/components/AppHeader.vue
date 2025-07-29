@@ -3,10 +3,11 @@ import IconTelegram from '@/assets/icons/telegram.svg'
 import IconWhatsApp from '@/assets/icons/whatsapp.svg'
 
 import { useMedia } from '@/composables/useMedia'
-
-const { handleOpenModal } = inject('stateModalForm')
+import { useGlobals } from '@/composables/useGlobals'
 
 const { isDesktop } = useMedia()
+const { getSocials } = useGlobals()
+const { handleOpenModal } = inject('stateModalForm')
 
 const showFormModal = () => {
   handleOpenModal(true)
@@ -36,12 +37,12 @@ const isMainPage = computed(() => {
           <div class="app-header__inner">
             <a
               class="app-header__action"
-              href="#"
+              :href="getSocials.telegram"
               ><IconTelegram class="app-header__icon"
             /></a>
             <a
               class="app-header__action"
-              href="#"
+              :href="getSocials.whatsApp"
               ><IconWhatsApp class="app-header__icon"
             /></a>
           </div>

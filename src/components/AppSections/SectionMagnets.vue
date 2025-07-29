@@ -1,3 +1,9 @@
+<script setup lang="ts">
+const props = defineProps({
+  data: Object,
+})
+</script>
+
 <template>
   <section class="magnets">
     <AppContainer
@@ -12,24 +18,19 @@
       <div class="magnets__info">
         <div class="magnets__box">
           <div class="magnets__inner">
-            <h2 class="magnets__title">магниты</h2>
-            <h4 class="magnets__subtitle">
-              <span class="text-accent">ХОРОШИЕ ВОСПОМИНАНИЯ <br /></span>В ПОВСЕДНЕВНОМ
-              ПРОСТРАНСТВЕ
-            </h4>
+            <h1 class="magnets__title">{{ props.data.title }}</h1>
+            <h4
+              class="magnets__subtitle"
+              v-html="props.data.slogan"
+            />
           </div>
           <div class="magnets__description">
-            <p class="magnets__text">
-              Магниты — это не только украшение на холодильник, это карта ваших эмоций и
-              приключений. Они напоминают о тёплых днях, ярких впечатлениях и моментах, которые
-              хочется сохранить в памяти.
-              <br />
-              <br />
-              Персонализированные магниты с логотипом компании, добрым пожеланием или уникальным
-              дизайном станут приятным сюрпризом для близких или партнёров.ассоциации.
-            </p>
+            <div
+              v-html="props.data.text"
+              class="magnets__text"
+            />
             <strong class="magnets__strong">
-              Это не просто аксессуары, а эмоции, которые можно потрогать.
+              {{ props.data.feature }}
             </strong>
           </div>
         </div>
@@ -110,6 +111,10 @@
     @include lte($md) {
       font-size: 14px;
     }
+  }
+
+  &__subtitle span {
+    color: var(--color-accent-200);
   }
 
   &__description {

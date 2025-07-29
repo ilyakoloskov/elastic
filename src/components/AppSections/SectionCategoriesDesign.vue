@@ -1,5 +1,5 @@
 <script setup>
-import { useGlobals } from '~/composables/useGlobals'
+import { useGlobals } from '@/composables/useGlobals'
 const { getNavigation } = useGlobals()
 
 const props = defineProps({

@@ -17,10 +17,10 @@ const { isDesktop } = useMedia()
       class="pullers__title-block"
     >
       <h1 class="pullers__title">{{ props.data.product.title }}</h1>
-      <h4 class="pullers__title-description">
-        <span class="pullers__text-accent">ФУНКЦИОНАЛЬНЫЙ АКССЕСУАР</span>,<br />
-        ДЛЯ УДОБНОГО УПРАВЛЕНИЯ МОЛНИЕЙ
-      </h4>
+      <h4
+        class="pullers__title-description"
+        v-html="props.data.product.slogan"
+      />
     </div>
     <div class="pullers__image-container">
       <TheLogotip
@@ -213,7 +213,7 @@ const { isDesktop } = useMedia()
   }
 
   &__title-description span {
-    color: var(--color-accent-100);
+    color: var(--color-accent-200);
   }
 
   &__description-block {

@@ -1,3 +1,8 @@
+<script setup lang="ts">
+const props = defineProps({
+  data: Object,
+})
+</script>
 <template>
   <section class="keyrings">
     <AppContainer
@@ -15,22 +20,19 @@
           src="@assets/images/keyrings-smile.png"
         />
         <div class="keyrings__inner">
-          <h2 class="keyrings__title">БРЕЛОКИ</h2>
-          <h4 class="keyrings__subtitle">
-            ЛЕГКО <span class="text-accent">ПЕРСОНАЛИЗИРУЙТЕ <br /></span>
-            ПОВСЕДНЕВНЫЕ АКССЕСУАРЫ
-          </h4>
+          <h1 class="keyrings__title">{{ props.data.title }}</h1>
+          <h4
+            class="keyrings__subtitle"
+            v-html="props.data.slogan"
+          />
         </div>
         <div class="keyrings__description">
-          <p class="keyrings__text">
-            Когда достают ключи, взгляд падает на брелок, который был выбран. Он вызывает улыбку и
-            напоминает о важных моментах. Брелок — часть настроения и характера.<br />
-            Брелоки очень практичны. Они легко крепятся и не теряют своего вида даже при активном
-            использовании
-          </p>
+          <div
+            class="keyrings__text"
+            v-html="props.data.text"
+          />
           <strong class="keyrings__strong">
-            Это отличный подарок. Корпоративный сувенир, романтичный аксессуар или забавный подарок
-            другу. Их выбирают с душой, чтобы они дарили эмоции.
+            {{ props.data.feature }}
           </strong>
         </div>
       </div>
@@ -56,7 +58,7 @@
 
   &__info {
     display: flex;
-    gap: 10px;
+    gap: 20px;
     align-items: center;
     justify-content: space-between;
 
@@ -92,6 +94,10 @@
     @include lte($md) {
       font-size: 14px;
     }
+  }
+
+  &__subtitle span {
+    color: var(--color-accent-200);
   }
 
   &__description {

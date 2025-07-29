@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { useMedia } from '~/composables/useMedia'
+const props = defineProps({
+  data: Object,
+})
 
 const { isDesktop } = useMedia()
 </script>
@@ -21,22 +24,19 @@ const { isDesktop } = useMedia()
             class="brandbook__logo"
             size="lg"
           />
-          <h2 class="brandbook__title">брендбук</h2>
+          <h2 class="brandbook__title">{{ props.data.title }}</h2>
         </div>
-        <h4 class="brandbook__subtitle">
-          Философия и ценности <span class="text-accent">вашего бренда</span>
-        </h4>
+        <h4
+          class="brandbook__subtitle"
+          v-html="props.data.slogan"
+        />
         <div class="brandbook__description">
-          <p class="brandbook__text">
-            Брендбук помогает правильно и внятно презентовать идентичность бренда. Кроме того, когда
-            все элементы и пояснения по применению айдентики собраны в одном месте, они работают как
-            корпоративная энциклопедия.
-            <br />
+          <div
+            v-html="props.data.text"
+            class="brandbook__text"
+          />
 
-            Когда компании потребуется сделать упаковку для товара или выпустить печатные материалы,
-            примеры в брендбуке позволят сделать макеты дизайна по аналогии.
-          </p>
-          <h5 class="brandbook__strong">Это оптимизирует время работы и расходы!</h5>
+          <h5 class="brandbook__strong">{{ props.data.feature }}</h5>
         </div>
         <img
           alt=""
@@ -103,6 +103,10 @@ const { isDesktop } = useMedia()
     @include lt($lg) {
       text-align: center;
     }
+  }
+
+  &__subtitle span {
+    color: var(--color-accent-200);
   }
 
   &__description {

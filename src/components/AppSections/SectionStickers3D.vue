@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { useMedia } from '~/composables/useMedia'
+const props = defineProps({
+  data: Object,
+})
 
 const { isDesktop } = useMedia()
 </script>
@@ -15,17 +18,14 @@ const { isDesktop } = useMedia()
         class="stickers3d__inner"
       >
         <div class="stickers3d__title">
-          <h2 class="stickers3d__title-text">3D-стикеры</h2>
+          <h1 class="stickers3d__title-text">{{ props.data.title }}</h1>
         </div>
       </div>
       <h4
         v-if="!isDesktop"
         class="stickers3d__description-title"
-      >
-        СОЗДАЮТ <br />
-        <span class="stickers3d__text-accent">ЭМОЦИОНАЛЬНУЮ СВЯЗЬ</span><br />
-        С ПЕРВОГО касания
-      </h4>
+        v-html="props.data.slogan"
+      />
     </div>
     <div class="stickers3d__info">
       <div
@@ -34,26 +34,21 @@ const { isDesktop } = useMedia()
       >
         <div class="stickers3d__title">
           <TheLogotip size="lg" />
-          <h2 class="stickers3d__title-text">3D-стикеры</h2>
+          <h1 class="stickers3d__title-text">{{ props.data.title }}</h1>
         </div>
       </div>
       <h4
         v-if="isDesktop"
         class="stickers3d__description-title"
-      >
-        СОЗДАЮТ <br />
-        <span class="stickers3d__text-accent">ЭМОЦИОНАЛЬНУЮ СВЯЗЬ</span><br />
-        С ПЕРВОГО касания
-      </h4>
-      <p class="stickers3d__description-text">
-        3D стикеры — это мощный инструмент продвижения. Их объёмная фактура притягивает внимание и
-        вызывает желание прикоснуться, создавая эмоциональную связь с вашим брендом. Клиенты
-        запомнят вас не только визуально, но и тактильно — через приятные ощущения от контакта со
-        стикером. Это маркетинг, который не кричит о себе, а мягко, но настойчиво встраивается в
-        привычки аудитории.
-      </p>
+        v-html="props.data.slogan"
+      />
+      <div
+        v-html="props.data.text"
+        class="stickers3d__description-text"
+      />
+
       <h5 class="stickers3d__strong">
-        С 3D стикерами ваш бренд становится не просто видимым — он становится осязаемым.
+        {{ props.data.feature }}
       </h5>
       <img
         alt=""
@@ -218,7 +213,7 @@ const { isDesktop } = useMedia()
     }
   }
 
-  &__text-accent {
+  &__description-title span {
     color: var(--color-accent-100);
   }
 

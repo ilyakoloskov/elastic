@@ -1,3 +1,8 @@
+<script setup lang="ts">
+const props = defineProps({
+  data: Object,
+})
+</script>
 <template>
   <section class="kosters">
     <AppContainer
@@ -7,22 +12,20 @@
       <div class="kosters__info">
         <div class="kosters__inner">
           <TheLogotip size="lg" />
-          <h2 class="kosters__title">костеры</h2>
+          <h1 class="kosters__title">{{ props.data.title }}</h1>
         </div>
-        <h4 class="kosters__subtitle">
-          <span class="text-accent">ЗАЩИТИТ ЛЮБУЮ ПОВЕРХНОСТЬ</span> ОТ ВЛАГИ, ТЕМПЕРАТУРЫ, ЦАРАПИН
-        </h4>
+        <h4
+          class="kosters__subtitle"
+          v-html="props.data.slogan"
+        />
+
         <div class="kosters__description">
-          <p class="kosters__text">
-            Костер представляет собой многора зовую подставку, разработанную для защиты поверхностей
-            столов от капель, пятен, царапин и перепадов температур.
-            <br /><br />
-            Костеры играют значительную роль в декоре и могут быть персонализи рованы для отражения
-            и повышения узнаваемости бренда или для украшения пространства.
-          </p>
+          <div
+            v-html="props.data.text"
+            class="kosters__text"
+          />
           <h5 class="kosters__strong">
-            Костер — эффективное средство для про движения бренда, поскольку на них можно нанести
-            уникальный дизайн, который привлечёт внимание потребителей.
+            {{ props.data.feature }}
           </h5>
         </div>
         <img
@@ -98,7 +101,7 @@
     }
   }
 
-  &__text {
+  &__subtitle span {
     font-size: var(--font-size-sm);
   }
 

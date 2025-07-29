@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { useMedia } from '~/composables/useMedia'
 
+const props = defineProps({
+  data: Object,
+})
+
 const { isDesktop } = useMedia()
 </script>
 
@@ -16,16 +20,14 @@ const { isDesktop } = useMedia()
           class="patches__inner"
         >
           <div class="patches__title">
-            <h2 class="patches__title-text">ПАТЧИ</h2>
+            <h1 class="patches__title-text">{{ props.data.title }}</h1>
           </div>
         </div>
         <h4
           v-if="!isDesktop"
           class="patches__description-title"
-        >
-          ДЕТАЛЬ, КОТОРАЯ ОТРАЖАЕТ <br />ВАШ
-          <span class="text-accent">ДУХ ПРИКЛЮЧЕНИЙ</span>
-        </h4>
+          v-html="props.data.slogan"
+        />
       </div>
 
       <div class="patches__image-wrapper">
@@ -53,26 +55,21 @@ const { isDesktop } = useMedia()
         >
           <div class="patches__title">
             <TheLogotip size="lg" />
-            <h2 class="patches__title-text">ПАТЧИ</h2>
+            <h1 class="patches__title-text">{{ props.data.title }}</h1>
           </div>
         </div>
         <h4
           v-if="isDesktop"
           class="patches__description-title"
-        >
-          ДЕТАЛЬ, КОТОРАЯ ОТРАЖАЕТ ВАШ <span class="patches__text-accent">ДУХ ПРИКЛЮЧЕНИЙ</span>
-        </h4>
+          v-html="props.data.slogan"
+        />
         <div>
-          <p class="patches__description-text">
-            Патчи — это не только украшение для вашей одежды или рюкзака, это символы ваших самых
-            ярких моментов. Каждая деталь напоминает о приключениях.
-            <br /><br />
-            Патчи легко крепятся к любой липучке и надёжно держатся. Вы сможете индиви дуализировать
-            свою экипировку этим уникальным акссесуаром.
-          </p>
+          <div
+            v-html="props.data.text"
+            class="patches__description-text"
+          />
           <h5 class="patches__strong">
-            Патчи не только добавят яркости, но и расскажут вашу историю: о захватываю щих маршрутах
-            и покорённых вершинах.
+            {{ props.data.feature }}
           </h5>
         </div>
         <img
@@ -201,7 +198,7 @@ const { isDesktop } = useMedia()
     }
   }
 
-  &__text-accent {
+  &__description-title span {
     color: var(--color-accent-100);
   }
 

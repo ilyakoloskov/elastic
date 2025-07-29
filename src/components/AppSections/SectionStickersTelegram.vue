@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { useMedia } from '~/composables/useMedia'
 
+const props = defineProps({
+  data: Object,
+})
+
 const { isDesktop } = useMedia()
 </script>
 
@@ -13,10 +17,11 @@ const { isDesktop } = useMedia()
       v-if="!isDesktop"
       class="stickers-tg__inner"
     >
-      <h2 class="stickers-tg__title">Стикеры</h2>
-      <h4 class="stickers-tg__subtitle">
-        <span class="text-accent">ПОВЫШАЮТ лояльность<br /></span> клиента С ПЕРВОГО СООБЩЕНИЯ
-      </h4>
+      <h1 class="stickers-tg__title">{{ props.data.title }}</h1>
+      <h4
+        v-html="props.data.slogan"
+        class="stickers-tg__subtitle"
+      />
     </div>
 
     <img
@@ -29,20 +34,19 @@ const { isDesktop } = useMedia()
         v-if="isDesktop"
         class="stickers-tg__inner"
       >
-        <h2 class="stickers-tg__title">Стикеры</h2>
-        <h4 class="stickers-tg__subtitle">
-          <span class="text-accent">ПОВЫШАЮТ лояльность</span> клиента С ПЕРВОГО СООБЩЕНИЯ
-        </h4>
+        <h1 class="stickers-tg__title">{{ props.data.title }}</h1>
+        <h4
+          v-html="props.data.slogan"
+          class="stickers-tg__subtitle"
+        />
       </div>
       <div class="stickers-tg__description">
-        <p class="stickers-tg__text">
-          Корпоративные стикеры для социальных сетей нужны для живой и эмоциональной переписки
-          внутри коллектива, с клиентами, партнерами. Персонализированные стикеры выделят ваш бренд
-          и сделают его узнаваемым. Иллюстрации пригодятся для создания мерча и сувениров.
-        </p>
+        <div
+          class="stickers-tg__text"
+          v-html="props.data.text"
+        />
         <strong class="stickers-tg__strong">
-          Классный стикерпак - это готовый вирусный контент с вашей айдентикой, который мгновенно
-          разлетится за пределы чата!
+          {{ props.data.feature }}
         </strong>
       </div>
       <img
@@ -119,6 +123,10 @@ const { isDesktop } = useMedia()
     @include gte($lg) {
       max-width: 570px;
     }
+  }
+
+  &__subtitle span {
+    color: var(--color-accent-200);
   }
 
   &__text {

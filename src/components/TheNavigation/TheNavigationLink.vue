@@ -249,6 +249,7 @@ watch(
     font-weight: 700;
     color: var(--color-primary-200);
     text-decoration: none;
+    text-transform: capitalize;
     cursor: pointer;
   }
 

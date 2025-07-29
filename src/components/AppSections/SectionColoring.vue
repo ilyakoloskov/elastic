@@ -1,3 +1,9 @@
+<script setup lang="ts">
+const props = defineProps({
+  data: Object,
+})
+</script>
+
 <template>
   <div class="coloring">
     <AppContainer
@@ -11,21 +17,20 @@
       />
       <div class="coloring__info">
         <div class="coloring__inner">
-          <h2 class="coloring__title">Раскраски</h2>
-          <h4 class="coloring__subtitle">
-            <span class="text-accent">сделайте свой бренд ближе</span> через творчество
-          </h4>
+          <h1 class="coloring__title">{{ props.data.title }}</h1>
+          <h4
+            class="coloring__subtitle"
+            v-html="props.data.slogan"
+          />
         </div>
         <div class="coloring__description">
-          <p class="coloring__text">
-            Раскраски — эффективный маркетинговый инструмент, который работает на узнаваемость
-            бренда через творчество и эмоции. В отличие от стандартной рекламы, они вовлекают
-            клиента в интерактивный формат взаимодействия с брендом. Пока человек раскрашивает
-            фирменные узоры или персонажей, он непроизвольно запоминает логотипы и ассоциации.
-          </p>
+          <div />
+          <div
+            class="coloring__text"
+            v-html="props.data.text"
+          />
           <strong class="coloring__strong">
-            Дополнительный плюс – гибкость применения: их можно использовать как промоподарки, часть
-            event-мероприятий или даже как элемент упаковки.
+            {{ props.data.feature }}
           </strong>
         </div>
         <img
@@ -95,6 +100,13 @@
     }
   }
 
+  &__subtitle span {
+    color: var(--color-accent-200);
+    @include lte($md) {
+      font-size: var(--font-size-sm);
+    }
+  }
+
   &__description {
     display: flex;
     flex-direction: column;
@@ -105,12 +117,6 @@
     }
     @include lt($lg) {
       gap: 14px;
-    }
-  }
-
-  &__text {
-    @include lte($md) {
-      font-size: var(--font-size-sm);
     }
   }
 
