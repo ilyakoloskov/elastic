@@ -85,6 +85,11 @@ const props = defineProps({
     display: flex;
     justify-content: space-between;
     margin-top: -330px;
+
+    @media screen and (max-width: 1280px) {
+      flex-direction: column;
+      margin: 0;
+    }
   }
 
   &__title {
@@ -160,6 +165,10 @@ const props = defineProps({
     flex-wrap: wrap;
     gap: 40px;
     margin-top: 24px;
+
+    @media screen and (max-width: 480px) {
+      gap: 10px;
+    }
   }
 
   &__link {

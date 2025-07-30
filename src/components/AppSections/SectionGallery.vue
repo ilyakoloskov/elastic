@@ -1,13 +1,27 @@
 <script setup lang="ts">
-// TODO: Пофиксить вместе с попапом
+import baguetteBox from 'baguettebox.js'
+import 'baguettebox.js/dist/baguetteBox.min.css'
+
+interface GalleryItem {
+  id: number
+  img: {
+    preview: string
+    origin: string
+  }
+  name: string
+}
+
 const props = defineProps({
-  items: Array,
+  items: {
+    type: Array as PropType<GalleryItem[]>,
+    default: () => [],
+  },
 })
 
 const chunkSize = 5
 
-const getChunks = (array: number[]) => {
-  const result: (number | string)[][] = []
+const getChunks = (array: GalleryItem[]) => {
+  const result: GalleryItem[][] = []
 
   for (let i = 0; i < array.length; i += chunkSize) {
     const chunk = array.slice(i, i + chunkSize)
@@ -17,19 +31,36 @@ const getChunks = (array: number[]) => {
   return result
 }
 
-const chunks = getChunks(props.items)
+const chunks = computed(() => getChunks(props.items))
+
+onMounted(() => {
+  nextTick(() => {
+    baguetteBox.run('.gallery', {
+      animation: 'fadeIn',
+      noScrollbars: true,
+      overlayBackgroundColor: 'rgba(0,0,0,0.8)',
+    })
+  })
+})
+
+const openGallery = (index: number) => {
+  const galleryItems = document.querySelectorAll('.gallery-item')
+  if (galleryItems[index]) {
+    ;(galleryItems[index] as HTMLElement).click()
+  }
+}
 </script>
 
 <template>
   <section class="gallery">
     <AppContainer class="gallery__container">
       <template
-        v-for="(chunk, index) in chunks"
-        :key="index"
+        v-for="(chunk, chunkIndex) in chunks"
+        :key="chunkIndex"
       >
         <a
           v-for="(item, itemIndex) in chunk"
-          :key="itemIndex"
+          :key="item.id"
           :class="[
             'gallery-item',
             {
@@ -37,14 +68,20 @@ const chunks = getChunks(props.items)
               'gallery-item_lg': chunk.length < 2,
             },
           ]"
-          href="#"
+          :href="item.img.origin"
+          @click="openGallery"
         >
           <img
-            alt=""
+            :alt="item.name || `Изображение ${item.id}`"
             class="gallery-item__img"
-            src="@assets/images/stub-image.jpg"
+            :src="item.img.preview"
           />
-          <span class="gallery-item__name">Lorem ipsum dolor sit amet {{ item }} </span>
+          <span
+            v-if="item.name"
+            class="gallery-item__name"
+          >
+            {{ item.name }}
+          </span>
           <div class="gallery-item__overlay" />
         </a>
       </template>

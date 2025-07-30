@@ -68,6 +68,10 @@
     gap: var(--spacing-md);
     padding-top: var(--spacing-5xl);
     padding-bottom: var(--spacing-5xl);
+
+    @media screen and (max-width: 1280px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 
   &__title {
@@ -98,6 +102,10 @@
     grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-md);
     margin-top: 24px;
+
+    @media screen and (max-width: 480px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 
   &__item {

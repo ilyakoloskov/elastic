@@ -94,27 +94,28 @@ const onFocus = () => {
 <style lang="scss">
 .app-button {
   display: inline-flex;
+  gap: 4px;
   align-items: center;
   justify-content: center;
-  gap: 4px;
 
   padding: 10px 20px;
-  border-radius: var(--border-radius-lg);
-  border: 2px solid var(--color-primary-200);
-  transition: var(--transition-hover);
-
-  background-color: var(--color-primary-10);
-
-  cursor: pointer;
-
-  appearance: none;
+  color: var(--color-primary-200);
   -webkit-appearance: none;
   -moz-appearance: none;
 
+  appearance: none;
+
+  cursor: pointer;
+
+  background-color: var(--color-primary-10);
+  border: 2px solid var(--color-primary-200);
+  border-radius: var(--border-radius-lg);
+  transition: var(--transition-hover);
+
   &:hover {
-    outline: none;
-    background-color: var(--color-primary-200);
     color: var(--color-primary-50);
+    background-color: var(--color-primary-200);
+    outline: none;
   }
 
   &:active {
@@ -123,10 +124,10 @@ const onFocus = () => {
 
   &:disabled,
   &_disabled:disabled {
-    cursor: not-allowed;
-    pointer-events: all !important;
-    background-color: var(--color-secondary-100);
     color: var(--color-primary-50);
+    pointer-events: all !important;
+    cursor: not-allowed;
+    background-color: var(--color-secondary-100);
   }
 
   &__content {
