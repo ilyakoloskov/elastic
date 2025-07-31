@@ -103,6 +103,10 @@ const props = defineProps({
   &__description {
     font-size: var(--font-size-md);
     font-weight: 300;
+
+    @media screen and (max-width: 480px) {
+      font-size: var(--font-size-m);
+    }
   }
 }
 </style>

@@ -141,6 +141,11 @@ const props = defineProps({
     top: -200px;
     left: 0;
     max-width: 632px;
+
+    @media screen and (max-width: 768px) {
+      top: 0;
+      max-width: 332px;
+    }
   }
 
   &__inner {

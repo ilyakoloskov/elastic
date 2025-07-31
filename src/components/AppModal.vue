@@ -152,6 +152,10 @@ const close = () => {
       border: 3px solid transparent; /* регулируйте это значение по необходимости */
       border-radius: 8px;
     }
+
+    @media screen and (max-width: 480px) {
+      padding: 35px 20px;
+    }
   }
 
   &__top {

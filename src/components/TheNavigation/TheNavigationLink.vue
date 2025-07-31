@@ -5,6 +5,8 @@ import { vClickOutside } from '@/directives/vClickOutside'
 import { useMedia } from '@/composables/useMedia'
 import IconCaret from '@/assets/icons/caret-down.svg?component'
 
+const { isDesktop, isMobile } = useMedia()
+
 const props = withDefaults(
   defineProps<{
     label: string
@@ -24,10 +26,10 @@ const currenctComponent = computed(() => {
   return 'button'
 })
 
-const { isDesktop } = useMedia()
-
 const isOpen = ref<boolean>(false)
 const handleShow = (flag: boolean) => {
+  if (isMobile.value) return
+
   if (isOpen.value) {
     setTimeout(() => {
       isOpen.value = flag
@@ -40,6 +42,7 @@ const handleClick = () => {
   isOpen.value = !isOpen.value
 }
 const handleClickOutside = () => {
+  if (!isDesktop.value) return
   isOpen.value = false
 }
 

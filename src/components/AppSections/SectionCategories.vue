@@ -83,13 +83,18 @@ const props = defineProps({
 
   &__wrap {
     display: flex;
+    gap: var(--spacing-md);
     justify-content: space-between;
     margin-top: -330px;
 
     @media screen and (max-width: 1280px) {
-      flex-direction: column;
       margin: 0;
     }
+
+    // @media screen and (max-width: 768px) {
+    //   display: grid;
+    //   grid-template-columns: 1fr;
+    // }
   }
 
   &__title {
@@ -136,7 +141,7 @@ const props = defineProps({
     align-items: stretch;
     max-width: 804px;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1280px) {
       flex-direction: column;
     }
   }
@@ -154,6 +159,10 @@ const props = defineProps({
     gap: 10px;
     justify-self: end;
     max-width: 923px;
+
+    @media screen and (max-width: 480px) {
+      justify-self: stretch !important;
+    }
   }
 
   &__navigation_start {
@@ -167,7 +176,10 @@ const props = defineProps({
     margin-top: 24px;
 
     @media screen and (max-width: 480px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 10px;
+      width: 100%;
     }
   }
 
@@ -181,6 +193,11 @@ const props = defineProps({
     font-size: 18px;
     color: var(--color-primary-200);
     border-bottom: 1px solid var(--color-primary-200);
+
+    @media screen and (max-width: 480px) {
+      min-width: 100%;
+      font-size: 16px;
+    }
   }
 
   &__link-icon {

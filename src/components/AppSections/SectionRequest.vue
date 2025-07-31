@@ -79,12 +79,14 @@ const showFormModal = () => {
   }
 
   &__personage {
-    max-width: 531px;
-
     @media screen and (max-width: 768px) {
       align-self: start;
       max-width: 205px;
       margin-top: -20px;
+    }
+
+    @media screen and (max-width: 480px) {
+      max-width: 130px;
     }
   }
 

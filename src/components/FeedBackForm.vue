@@ -124,9 +124,12 @@ const submitForm = async () => {
         placeholder="Название вашей компании"
       />
 
-      <AppFormField :error="v$.agreement.$error ? errorMessages.agreement : ''">
+      <AppFormField
+        class="form__checkbox"
+        :error="v$.agreement.$error ? errorMessages.agreement : ''"
+      >
         <AppCheckBox v-model="model.agreement">
-          Я соглашаюсь с Политикой Конфиденциальности сайта
+          Я соглашаюсь с политикой конфиденциальности сайта
         </AppCheckBox>
       </AppFormField>
 
@@ -147,21 +150,39 @@ const submitForm = async () => {
   width: 100%;
   padding-top: var(--spacing-lg);
 
+  @media screen and (max-width: 480px) {
+    gap: 20px;
+  }
+
   &__fields-wrapper {
     display: flex;
-    gap: 10px;
+    gap: 20px;
     justify-content: space-between;
     width: 100%;
+
+    @media screen and (max-width: 480px) {
+      flex-direction: column;
+    }
   }
 
   &__input {
     width: 100%;
     max-width: 300px;
+
+    @media screen and (max-width: 480px) {
+      max-width: 100%;
+    }
   }
 
   &__loader {
     height: 100%;
     min-height: 300px;
+  }
+
+  &__checkbox .app-checkbox__label-text {
+    @media screen and (max-width: 480px) {
+      font-size: 14px;
+    }
   }
 
   &__is-send-title {
