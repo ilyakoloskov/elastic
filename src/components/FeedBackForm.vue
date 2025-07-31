@@ -2,14 +2,22 @@
 import { useVuelidate } from '@vuelidate/core'
 import { email, maxLength, minLength, required } from '@vuelidate/validators'
 import { reactive } from 'vue'
+const { handleOpenModal } = inject('stateModalForm')
+
+const closeFormModal = () => {
+  handleOpenModal(false)
+}
+
+let isSend = ref(false)
+let isSendLoading = ref(false)
 
 const model = reactive({
-  name: '',
-  surname: '',
-  phone: '',
-  email: '',
-  company: '',
-  agreement: false,
+  name: '2222',
+  surname: '22222',
+  phone: '+79512998888',
+  email: '2222@mail.ru',
+  company: '23123',
+  agreement: true,
 })
 
 const isAgreement = (value) => value === true
@@ -36,75 +44,98 @@ const errorMessages = {
 const submitForm = async () => {
   v$.value.$touch()
   if (v$.value.$invalid) return
-  await useApiFetch('callback/', 'POST', {
-    body: JSON.stringify(model),
-  })
+  try {
+    isSendLoading.value = true
+    const response = await useApiFetch('callback/', 'POST', {
+      body: JSON.stringify(model),
+    })
+    if (response.data.value.success) {
+      isSend.value = true
+      isSendLoading.value = false
+    }
+  } catch (error) {
+    console.log(error)
+  } finally {
+    isSendLoading.value = false
+  }
 }
 </script>
 
 <template>
-  <form
-    class="form"
-    @submit.prevent="submitForm"
-  >
-    <div class="form__fields-wrapper">
+  <form class="form">
+    <template v-if="isSendLoading"><AppLoader class="form__loader" /></template>
+    <template v-else-if="isSend">
+      <div class="form__is-send-title">Ваша заявка успешно оправлена</div>
+      <AppButton @click="closeFormModal">Закрыть</AppButton>
+    </template>
+    <template v-else>
+      <div class="form__fields-wrapper">
+        <AppInput
+          v-model="model.name"
+          :error="v$.name.$error ? errorMessages.required : ''"
+          class="form__input"
+          name="name"
+          placeholder="Имя*"
+        />
+        <AppInput
+          v-model="model.surname"
+          :error="
+            v$.surname.$error && v$.surname.maxLength.$error ? errorMessages.maxLength(50) : ''
+          "
+          class="form__input"
+          name="surname"
+          placeholder="Фамилия"
+        />
+      </div>
+      <div class="form__fields-wrapper">
+        <AppInput
+          v-model="model.phone"
+          :error="
+            v$.phone.$error
+              ? v$.phone.required.$error
+                ? errorMessages.required
+                : errorMessages.minLength(10)
+              : ''
+          "
+          class="form__input"
+          name="phone"
+          placeholder="Телефон*"
+        />
+        <AppInput
+          v-model="model.email"
+          :error="
+            v$.email.$error
+              ? v$.email.required.$error
+                ? errorMessages.required
+                : errorMessages.email
+              : ''
+          "
+          class="form__input"
+          name="email"
+          placeholder="Ваш email*"
+        />
+      </div>
       <AppInput
-        v-model="model.name"
-        :error="v$.name.$error ? errorMessages.required : ''"
-        class="form__input"
-        name="name"
-        placeholder="Имя*"
-      />
-      <AppInput
-        v-model="model.surname"
-        :error="v$.surname.$error && v$.surname.maxLength.$error ? errorMessages.maxLength(50) : ''"
-        class="form__input"
-        name="surname"
-        placeholder="Фамилия"
-      />
-    </div>
-    <div class="form__fields-wrapper">
-      <AppInput
-        v-model="model.phone"
+        v-model="model.company"
         :error="
-          v$.phone.$error
-            ? v$.phone.required.$error
-              ? errorMessages.required
-              : errorMessages.minLength(10)
-            : ''
+          v$.company.$error && v$.company.maxLength.$error ? errorMessages.maxLength(100) : ''
         "
-        class="form__input"
-        name="phone"
-        placeholder="Телефон*"
+        name="company"
+        placeholder="Название вашей компании"
       />
-      <AppInput
-        v-model="model.email"
-        :error="
-          v$.email.$error
-            ? v$.email.required.$error
-              ? errorMessages.required
-              : errorMessages.email
-            : ''
-        "
-        class="form__input"
-        name="email"
-        placeholder="Ваш email*"
-      />
-    </div>
-    <AppInput
-      v-model="model.company"
-      :error="v$.company.$error && v$.company.maxLength.$error ? errorMessages.maxLength(100) : ''"
-      name="company"
-      placeholder="Название вашей компании"
-    />
 
-    <AppFormField :error="v$.agreement.$error ? errorMessages.agreement : ''">
-      <AppCheckBox v-model="model.agreement">
-        Я соглашаюсь с Политикой Конфиденциальности сайта
-      </AppCheckBox>
-    </AppFormField>
+      <AppFormField :error="v$.agreement.$error ? errorMessages.agreement : ''">
+        <AppCheckBox v-model="model.agreement">
+          Я соглашаюсь с Политикой Конфиденциальности сайта
+        </AppCheckBox>
+      </AppFormField>
 
-    <AppButton @click="submitForm">Отправить заявку</AppButton>
+      <AppButton
+        @click="submitForm"
+        type="submit"
+        >Отправить заявку</AppButton
+      >
+    </template>
   </form>
 </template>
 
@@ -126,6 +157,18 @@ const submitForm = async () => {
   &__input {
     width: 100%;
     max-width: 300px;
+  }
+
+  &__loader {
+    height: 100%;
+    min-height: 300px;
+  }
+
+  &__is-send-title {
+    font-size: var(--font-size-lx);
+    font-weight: 700;
+    color: var(--color-accent-100);
+    text-align: center;
   }
 }
 </style>
