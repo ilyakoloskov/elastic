@@ -53,7 +53,7 @@ const { isDesktop } = useMedia()
       <img
         alt=""
         class="stickers3d__smile"
-        src="@assets/images/stickers3D-smile.png"
+        src="@assets/images/stickers3d-smile.png"
       />
     </div>
     <div class="stickers3d__image-wrapper">
@@ -65,18 +65,18 @@ const { isDesktop } = useMedia()
         <img
           alt=""
           class="stickers3d__bg-img"
-          src="@assets/images/stickers3D-pattern.png"
+          src="@assets/images/stickers3d-pattern.png"
         />
       </div>
       <img
         alt=""
         class="stickers3d__phones-img"
-        src="@assets/images/stickers3D-phones.png"
+        src="@assets/images/stickers3d-phones.png"
       />
       <img
         alt=""
         class="stickers3d__mockup-img"
-        src="@assets/images/stickers3D-mockup.png"
+        src="@assets/images/stickers3d-mockup.png"
       />
     </div>
   </AppContainer>

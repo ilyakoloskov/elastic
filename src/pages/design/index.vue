@@ -15,7 +15,6 @@ definePageMeta({
       class="product-list__container"
       v-else
     >
-      {{ data }}
       <h1 class="product-list__title">{{ data.seo.title }}</h1>
       <div class="product-list__wrapper">
         <AppCard
