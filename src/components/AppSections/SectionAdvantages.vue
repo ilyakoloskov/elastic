@@ -16,38 +16,39 @@
             </p>
           </div>
           <div class="section-advantages__item">
-            <h6 class="section-advantages__item-title">в 3 раза лучше запоминается</h6>
+            <h6 class="section-advantages__item-title">+30% к намерению купить</h6>
             <p class="section-advantages__item-description">
-              По данным System1 Group, бренд с маскотом запоминается в 3 раза лучше, чем без него.
-              Персонаж цепляет внимание и остаётся в памяти.
+              Люди охотнее доверяют брендам с характером. Маскот вызывает эмоции, а эмоции —
+              конвертируются в покупки.
             </p>
           </div>
           <div class="section-advantages__item">
-            <h6 class="section-advantages__item-title">в 3 раза лучше запоминается</h6>
+            <h6 class="section-advantages__item-title">+40% вовлечённости в соцсетях</h6>
             <p class="section-advantages__item-description">
-              По данным System1 Group, бренд с маскотом запоминается в 3 раза лучше, чем без него.
-              Персонаж цепляет внимание и остаётся в памяти.
+              С маскотом взаимодействуют: лайкают, комментируют, фотографируются, отмечают. Это
+              живой контент, который работает бесплатно.
             </p>
           </div>
           <div class="section-advantages__item section-advantages__item_dark">
-            <h6 class="section-advantages__item-title">в 3 раза лучше запоминается</h6>
+            <h6 class="section-advantages__item-title">Выделяет вас среди конкурентов</h6>
             <p class="section-advantages__item-description">
-              По данным System1 Group, бренд с маскотом запоминается в 3 раза лучше, чем без него.
-              Персонаж цепляет внимание и остаётся в памяти.
+              Когда у всех — просто вывеска, у вас есть герой. Вас легче узнать, запомнить и
+              порекомендовать.
             </p>
           </div>
           <div class="section-advantages__item section-advantages__item_green">
-            <h6 class="section-advantages__item-title">в 3 раза лучше запоминается</h6>
+            <h6 class="section-advantages__item-title">Факт:</h6>
             <p class="section-advantages__item-description">
-              По данным System1 Group, бренд с маскотом запоминается в 3 раза лучше, чем без него.
-              Персонаж цепляет внимание и остаётся в памяти.
+              бизнесы, использующие маскотов, получают до +37% роста эффективности рекламы и до +64%
+              роста узнаваемости после внедрения героя. Маскот не развлечение. Это инвестиция в
+              лояльность, охваты и продажи.
             </p>
           </div>
           <div class="section-advantages__item">
-            <h6 class="section-advantages__item-title">в 3 раза лучше запоминается</h6>
+            <h6 class="section-advantages__item-title">Привлекает семьи с детьми</h6>
             <p class="section-advantages__item-description">
-              По данным System1 Group, бренд с маскотом запоминается в 3 раза лучше, чем без него.
-              Персонаж цепляет внимание и остаётся в памяти.
+              Дети любят героев. А родители возвращаются туда, где ребёнку понравилось. Особенно
+              важно для кафе, парков, зоопарков и развлечений.
             </p>
           </div>
         </div>
