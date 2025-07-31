@@ -90,11 +90,6 @@ const props = defineProps({
     @media screen and (max-width: 1280px) {
       margin: 0;
     }
-
-    // @media screen and (max-width: 768px) {
-    //   display: grid;
-    //   grid-template-columns: 1fr;
-    // }
   }
 
   &__title {
@@ -132,6 +127,10 @@ const props = defineProps({
     gap: var(--spacing-lg);
 
     min-width: 331px;
+
+    @media screen and (max-width: 768px) {
+      gap: var(--spacing-s);
+    }
   }
 
   &__inner {
