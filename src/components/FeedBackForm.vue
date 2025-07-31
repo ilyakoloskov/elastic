@@ -12,12 +12,12 @@ let isSend = ref(false)
 let isSendLoading = ref(false)
 
 const model = reactive({
-  name: '2222',
-  surname: '22222',
-  phone: '+79512998888',
-  email: '2222@mail.ru',
-  company: '23123',
-  agreement: true,
+  name: '',
+  surname: '',
+  phone: '',
+  email: '',
+  company: '',
+  agreement: false,
 })
 
 const isAgreement = (value) => value === true
