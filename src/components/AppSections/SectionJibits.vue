@@ -21,16 +21,14 @@ const { isDesktop } = useMedia()
           <TheLogotip size="lg" />
           <h1 class="jibits__title">{{ props.data.title }}</h1>
         </div>
-        <h4 class="jibits__subtitle">
-          {{ props.data.slogan }}
-        </h4>
+        <h4
+          class="jibits__subtitle"
+          v-html="props.data.slogan"
+        />
         <div
           v-html="props.data.text"
           class="jibits__description"
         />
-        <strong class="jibits__strong">
-          {{ props.data.feature }}
-        </strong>
         <img
           alt=""
           class="jibits__smile"
@@ -122,12 +120,6 @@ const { isDesktop } = useMedia()
     @include lte($md) {
       font-size: 14px;
     }
-  }
-
-  &__strong {
-    margin-top: 20px;
-    font-weight: 700;
-    color: var(--color-primary-200);
   }
 
   &__smile {

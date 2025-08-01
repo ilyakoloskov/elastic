@@ -15,7 +15,7 @@ definePageMeta({
     </template>
     <template v-else>
       <SectionJibits
-        :data="jibits"
+        :data="jibits.product"
         :pending="pending"
       />
 
