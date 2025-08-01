@@ -3,7 +3,7 @@ import svgLoader from 'vite-svg-loader'
 
 export default defineNuxtConfig({
   devtools: { enabled: false },
-  ssr: true,
+  ssr: false,
   // TODO: Сделать мета теги и title
 
   webpack: {
