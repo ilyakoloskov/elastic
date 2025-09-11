@@ -2,7 +2,7 @@ import { fileURLToPath, URL } from 'url'
 import svgLoader from 'vite-svg-loader'
 
 export default defineNuxtConfig({
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   ssr: false,
   // TODO: Сделать мета теги и title
 
