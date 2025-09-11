@@ -2,6 +2,8 @@
 const { handleOpenModal } = inject('stateModalForm')
 
 const route = useRoute()
+const router = useRouter()
+
 const { data, pending, error } = useApiFetch(`design/brandbook/${route.params.slug}/`)
 
 const showFormModal = () => {
@@ -10,6 +12,10 @@ const showFormModal = () => {
 
 definePageMeta({
   layout: 'subcategory',
+})
+
+onMounted(() => {
+  if (error) router.push('/')
 })
 </script>
 
