@@ -1,6 +1,9 @@
 <script setup lang="ts">
 const { handleOpenModal } = inject('stateModalForm')
 
+const route = useRoute()
+const { data, pending, error } = useApiFetch(`design/brandbook/${route.params.slug}/`)
+
 const showFormModal = () => {
   handleOpenModal(true)
 }
@@ -12,39 +15,43 @@ definePageMeta({
 
 <template>
   <section class="subproduct-page">
-    <img
-      class="subproduct-page__img"
-      src="@assets/images/subcategory-main-screen.png"
-    />
-    <AppBackLink class="subproduct-page__back-link" />
-    <AppContainer class="subproduct-page__container">
-      <!-- INFO -->
-      <div class="subproduct-page__info">
-        <h1 class="subproduct-page__title">Lorem ipsum</h1>
-        <p class="subproduct-page__description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-          ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        </p>
+    <template v-if="pending">
+      <AppLoader />
+    </template>
+    <template v-else>
+      <div class="subproduct-page__wrapper">
+        <img
+          class="subproduct-page__img"
+          :src="data.banner"
+        />
+        <AppBackLink class="subproduct-page__back-link" />
+        <AppContainer class="subproduct-page__container">
+          <!-- INFO -->
+          <div class="subproduct-page__info">
+            <h1 class="subproduct-page__title">{{ data.brandbook.title }}</h1>
+            <p class="subproduct-page__description">
+              {{ data.brandbook.text }}
+            </p>
+          </div>
+
+          <div class="subproduct-page__edge edge">
+            <div
+              class="edge-item"
+              v-for="item in data.brandbook.features"
+            >
+              <p class="edge-item__text">{{ item.title }}</p>
+              <h5 class="edge-item__title">{{ item.text }}</h5>
+            </div>
+
+            <AppButton @click="showFormModal">Оставить заявку</AppButton>
+          </div>
+
+          <SectionSubProductImages :items="data.gallery" />
+
+          <SectionForm />
+        </AppContainer>
       </div>
-
-      <div class="subproduct-page__edge edge">
-        <div
-          class="edge-item"
-          v-for="item in 3"
-        >
-          <p class="edge-item__text">Lorem ipsum dolor</p>
-          <h5 class="edge-item__title">Lorem ipsum dolor</h5>
-        </div>
-
-        <AppButton @click="showFormModal">Оставить заявку</AppButton>
-      </div>
-
-      <SectionGallery />
-
-      <SectionForm />
-    </AppContainer>
+    </template>
   </section>
 </template>
 

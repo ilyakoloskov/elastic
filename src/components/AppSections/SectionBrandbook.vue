@@ -55,11 +55,14 @@ const { isDesktop } = useMedia()
     grid-template-columns: auto 1fr;
 
     @include lt($lg) {
+      grid-template-columns: 1fr;
+      gap: 24px;
       align-items: center;
     }
   }
 
   &__image {
+    width: 100%;
     max-width: 780px;
   }
 
@@ -67,6 +70,10 @@ const { isDesktop } = useMedia()
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+
+    @include lt($lg) {
+      align-items: center;
+    }
   }
 
   &__inner {
@@ -125,6 +132,10 @@ const { isDesktop } = useMedia()
     color: var(--color-primary-200);
     @include lte($md) {
       font-size: var(--font-size-sm);
+    }
+
+    @include lt($lg) {
+      align-self: center;
     }
   }
 

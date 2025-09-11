@@ -18,7 +18,7 @@ definePageMeta({
         :pending="pending"
       />
 
-      <SectionGallery :items="brandbook.gallery" />
+      <SectionSubCategories :items="brandbook.pages" />
     </template>
   </div>
 </template>

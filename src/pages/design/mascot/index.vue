@@ -19,7 +19,7 @@ definePageMeta({
         :pending="pending"
       />
 
-      <SectionGallery :items="mascot.gallery" />
+      <SectionSubCategories :items="mascot.pages" />
     </template>
   </div>
 </template>

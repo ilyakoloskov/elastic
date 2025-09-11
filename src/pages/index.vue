@@ -1,9 +1,7 @@
 <script setup>
 import { useApiFetch } from '@/composables/useApiFetch'
-
 const { data, pending, error } = useApiFetch('home/')
 
-const seo = computed(() => data.value?.seo || {})
 const main = computed(() => data.value?.main || {})
 const design = computed(() => data.value?.design || {})
 const callback = computed(() => data.value?.callback || {})
