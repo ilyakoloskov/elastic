@@ -49,52 +49,252 @@ const openGallery = (index: number) => {
     ;(galleryItems[index] as HTMLElement).click()
   }
 }
+
+// const chunksMock = [
+//   [
+//     {
+//       id: 11,
+//       img: {
+//         preview: 'https://e-lastic.pro/u/product_photo/1/11_big.webp',
+//         origin: 'https://e-lastic.pro/u/product_photo/1/11.jpg',
+//       },
+//       name: '',
+//     },
+//     {
+//       id: 9,
+//       img: {
+//         preview: 'https://e-lastic.pro/u/product_photo/1/9_big.webp',
+//         origin: 'https://e-lastic.pro/u/product_photo/1/9.jpg',
+//       },
+//       name: '',
+//     },
+//     {
+//       id: 10,
+//       img: {
+//         preview: 'https://e-lastic.pro/u/product_photo/1/9_big.webp',
+//         origin: 'https://e-lastic.pro/u/product_photo/1/9.jpg',
+//       },
+//       name: '',
+//     },
+//     {
+//       id: 12,
+//       img: {
+//         preview: 'https://e-lastic.pro/u/product_photo/1/9_big.webp',
+//         origin: 'https://e-lastic.pro/u/product_photo/1/9.jpg',
+//       },
+//       name: '',
+//     },
+//     {
+//       id: 12,
+//       img: {
+//         preview: 'https://e-lastic.pro/u/product_photo/1/9_big.webp',
+//         origin: 'https://e-lastic.pro/u/product_photo/1/9.jpg',
+//       },
+//       name: '',
+//     },
+//   ],
+//   [
+//     {
+//       id: 112,
+//       img: {
+//         preview: 'https://e-lastic.pro/u/product_photo/1/9_big.webp',
+//         origin: 'https://e-lastic.pro/u/product_photo/1/9.jpg',
+//       },
+//       name: '',
+//     },
+//     {
+//       id: 112,
+//       img: {
+//         preview: 'https://e-lastic.pro/u/product_photo/1/9_big.webp',
+//         origin: 'https://e-lastic.pro/u/product_photo/1/9.jpg',
+//       },
+//       name: '',
+//     },
+//     {
+//       id: 9,
+//       img: {
+//         preview: 'https://e-lastic.pro/u/product_photo/1/9_big.webp',
+//         origin: 'https://e-lastic.pro/u/product_photo/1/9.jpg',
+//       },
+//       name: '',
+//     },
+//     {
+//       id: 9,
+//       img: {
+//         preview: 'https://e-lastic.pro/u/product_photo/1/9_big.webp',
+//         origin: 'https://e-lastic.pro/u/product_photo/1/9.jpg',
+//       },
+//       name: '',
+//     },
+//     {
+//       id: 9,
+//       img: {
+//         preview: 'https://e-lastic.pro/u/product_photo/1/9_big.webp',
+//         origin: 'https://e-lastic.pro/u/product_photo/1/9.jpg',
+//       },
+//       name: '',
+//     },
+//   ],
+// ]
+
+const groupLength = ref<number>(6)
+
+const groups = computed(() => {
+  let i = 0
+  const groups = []
+
+  while (i < props.items.length) {
+    const group = props.items.slice(i, i + groupLength.value)
+
+    if (group.length === 1 && groupLength.value === 5) {
+      const lastAddedGroup = groups[groups.length - 1]
+
+      if (lastAddedGroup?.length > 0) {
+        const lastElement = lastAddedGroup.pop()
+
+        if (lastElement) {
+          group.push(lastElement)
+        }
+      }
+    }
+
+    groups.push(group)
+
+    i += groupLength.value
+  }
+
+  return groups
+})
+
+const groupLengthSetup = () => {
+  if (window.innerWidth >= 1440) {
+    groupLength.value = 5
+  } else {
+    groupLength.value = 6
+  }
+}
+
+onMounted(() => {
+  groupLengthSetup()
+  window.addEventListener('resize', groupLengthSetup)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', groupLengthSetup)
+})
 </script>
 
 <template>
   <section class="gallery">
-    <AppContainer class="gallery__container">
-      <template
-        v-for="(chunk, chunkIndex) in chunks"
-        :key="chunkIndex"
+    <AppContainer>
+      <div
+        class="gallery__container"
+        v-for="(group, i) in groups"
+        :key="i"
+        :class="[`gallery__container_${group.length}`]"
       >
-        <a
-          v-for="(item, itemIndex) in chunk"
+        <div
+          v-for="(item, itemIndex) in group"
           :key="item.id"
-          :class="[
-            'gallery-item',
-            {
-              'gallery-item_md': itemIndex + 1 < 3 || chunk.length < 3,
-              'gallery-item_lg': chunk.length < 2,
-            },
-          ]"
-          :href="item.img.origin"
-          @click="openGallery"
+          class="gallery__col"
         >
-          <img
-            :alt="item.name || `Изображение ${item.id}`"
-            class="gallery-item__img"
-            :src="item.img.preview"
-          />
-          <span
-            v-if="item.name"
-            class="gallery-item__name"
+          <a
+            :class="['gallery-item']"
+            :href="item.img.origin"
+            @click.prevent="openGallery(itemIndex)"
           >
-            {{ item.name }}
-          </span>
-          <div class="gallery-item__overlay" />
-        </a>
-      </template>
+            <img
+              :alt="item.name || `Изображение ${item.id}`"
+              class="gallery-item__img"
+              :src="item.img.preview"
+            />
+            <span
+              v-if="item.name"
+              class="gallery-item__name"
+            >
+              {{ item.name }}
+            </span>
+            <div class="gallery-item__overlay" />
+          </a>
+        </div>
+      </div>
     </AppContainer>
   </section>
 </template>
 
 <style lang="scss">
 .gallery {
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
   &__container {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(1, minmax(0, 1fr));
     gap: 24px;
+
+    @media screen and (min-width: 576px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px 16px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      gap: 24px;
+    }
+
+    @media screen and (min-width: 1400px) {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+  }
+
+  &__col {
+    grid-column: span 1 / span 1;
+    overflow: hidden;
+  }
+
+  &__container_1 > div {
+    @media screen and (min-width: 1440px) {
+      grid-column: span 6 / span 6;
+    }
+  }
+
+  &__container_2 > div {
+    @media screen and (min-width: 1440px) {
+      grid-column: span 6 / span 6;
+    }
+  }
+
+  &__container_3 > div {
+    @media screen and (min-width: 1440px) {
+      grid-column: span 4 / span 4;
+    }
+  }
+
+  &__container_4 > div {
+    @media screen and (min-width: 1440px) {
+      grid-column: span 6 / span 6;
+    }
+  }
+
+  &__container_5 > div {
+    @media screen and (min-width: 1440px) {
+      grid-column: span 4 / span 4;
+    }
+  }
+
+  &__container_6 > div {
+    @media screen and (min-width: 1440px) {
+      grid-column: span 4 / span 4;
+    }
+  }
+
+  &__container_5 > div:nth-child(1),
+  &__container_5 > div:nth-child(2) {
+    @media screen and (min-width: 1440px) {
+      grid-column: span 6 / span 6;
+    }
   }
 }
 
@@ -102,14 +302,6 @@ const openGallery = (index: number) => {
   position: relative;
   grid-column: span 2;
   overflow: hidden;
-
-  &_md {
-    grid-column: span 3;
-  }
-
-  &_lg {
-    grid-column: span 6;
-  }
 
   &__overlay {
     position: absolute;
