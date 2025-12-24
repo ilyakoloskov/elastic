@@ -16,6 +16,11 @@ const props = defineProps({
     type: Array as PropType<GalleryItem[]>,
     default: () => [],
   },
+
+  isGallery: {
+    type: Boolean,
+    default: true,
+  },
 })
 
 const chunkSize = 5
@@ -35,107 +40,17 @@ const chunks = computed(() => getChunks(props.items))
 
 onMounted(() => {
   nextTick(() => {
-    baguetteBox.run('.gallery', {
-      animation: 'fadeIn',
-      noScrollbars: true,
-      overlayBackgroundColor: 'rgba(0,0,0,0.8)',
-    })
+    const galleryItems = document.querySelectorAll('.gallery-item')
+
+    if (galleryItems.length > 0) {
+      baguetteBox.run('.gallery', {
+        animation: 'fadeIn',
+        noScrollbars: true,
+        overlayBackgroundColor: 'rgba(0,0,0,0.8)',
+      })
+    }
   })
 })
-
-const openGallery = (index: number) => {
-  const galleryItems = document.querySelectorAll('.gallery-item')
-  if (galleryItems[index]) {
-    ;(galleryItems[index] as HTMLElement).click()
-  }
-}
-
-// const chunksMock = [
-//   [
-//     {
-//       id: 11,
-//       img: {
-//         preview: 'https://e-lastic.pro/u/product_photo/1/11_big.webp',
-//         origin: 'https://e-lastic.pro/u/product_photo/1/11.jpg',
-//       },
-//       name: '',
-//     },
-//     {
-//       id: 9,
-//       img: {
-//         preview: 'https://e-lastic.pro/u/product_photo/1/9_big.webp',
-//         origin: 'https://e-lastic.pro/u/product_photo/1/9.jpg',
-//       },
-//       name: '',
-//     },
-//     {
-//       id: 10,
-//       img: {
-//         preview: 'https://e-lastic.pro/u/product_photo/1/9_big.webp',
-//         origin: 'https://e-lastic.pro/u/product_photo/1/9.jpg',
-//       },
-//       name: '',
-//     },
-//     {
-//       id: 12,
-//       img: {
-//         preview: 'https://e-lastic.pro/u/product_photo/1/9_big.webp',
-//         origin: 'https://e-lastic.pro/u/product_photo/1/9.jpg',
-//       },
-//       name: '',
-//     },
-//     {
-//       id: 12,
-//       img: {
-//         preview: 'https://e-lastic.pro/u/product_photo/1/9_big.webp',
-//         origin: 'https://e-lastic.pro/u/product_photo/1/9.jpg',
-//       },
-//       name: '',
-//     },
-//   ],
-//   [
-//     {
-//       id: 112,
-//       img: {
-//         preview: 'https://e-lastic.pro/u/product_photo/1/9_big.webp',
-//         origin: 'https://e-lastic.pro/u/product_photo/1/9.jpg',
-//       },
-//       name: '',
-//     },
-//     {
-//       id: 112,
-//       img: {
-//         preview: 'https://e-lastic.pro/u/product_photo/1/9_big.webp',
-//         origin: 'https://e-lastic.pro/u/product_photo/1/9.jpg',
-//       },
-//       name: '',
-//     },
-//     {
-//       id: 9,
-//       img: {
-//         preview: 'https://e-lastic.pro/u/product_photo/1/9_big.webp',
-//         origin: 'https://e-lastic.pro/u/product_photo/1/9.jpg',
-//       },
-//       name: '',
-//     },
-//     {
-//       id: 9,
-//       img: {
-//         preview: 'https://e-lastic.pro/u/product_photo/1/9_big.webp',
-//         origin: 'https://e-lastic.pro/u/product_photo/1/9.jpg',
-//       },
-//       name: '',
-//     },
-//     {
-//       id: 9,
-//       img: {
-//         preview: 'https://e-lastic.pro/u/product_photo/1/9_big.webp',
-//         origin: 'https://e-lastic.pro/u/product_photo/1/9.jpg',
-//       },
-//       name: '',
-//     },
-//   ],
-// ]
 
 const groupLength = ref<number>(6)
 
@@ -198,24 +113,46 @@ onBeforeUnmount(() => {
           :key="item.id"
           class="gallery__col"
         >
-          <a
-            :class="['gallery-item']"
-            :href="item.img.origin"
-            @click.prevent="openGallery(itemIndex)"
-          >
-            <img
-              :alt="item.name || `Изображение ${item.id}`"
-              class="gallery-item__img"
-              :src="item.img.preview"
-            />
-            <span
-              v-if="item.name"
-              class="gallery-item__name"
+          <template v-if="isGallery">
+            <a
+              :href="item.img.origin"
+              class="gallery-item"
+              :data-caption="item.name"
             >
-              {{ item.name }}
-            </span>
-            <div class="gallery-item__overlay" />
-          </a>
+              <img
+                :alt="item.name || `Изображение ${item.id}`"
+                class="gallery-item__img"
+                :src="item.img.preview"
+              />
+              <span
+                v-if="item.name"
+                class="gallery-item__name"
+              >
+                {{ item.name }}
+              </span>
+              <div class="gallery-item__overlay" />
+            </a>
+          </template>
+
+          <template v-else>
+            <RouterLink
+              class="gallery-item"
+              :to="item.img.origin"
+            >
+              <img
+                :alt="item.name || `Изображение ${item.id}`"
+                class="gallery-item__img"
+                :src="item.img.preview"
+              />
+              <span
+                v-if="item.name"
+                class="gallery-item__name"
+              >
+                {{ item.name }}
+              </span>
+              <div class="gallery-item__overlay" />
+            </RouterLink>
+          </template>
         </div>
       </div>
     </AppContainer>
@@ -223,6 +160,10 @@ onBeforeUnmount(() => {
 </template>
 
 <style lang="scss">
+#baguetteBox-overlay .full-image img {
+  max-width: 1280px;
+}
+
 .gallery {
   .app-container {
     display: flex;

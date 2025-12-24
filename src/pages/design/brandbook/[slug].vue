@@ -13,10 +13,6 @@ const showFormModal = () => {
 definePageMeta({
   layout: 'subcategory',
 })
-
-onMounted(() => {
-  if (error) router.push('/')
-})
 </script>
 
 <template>
